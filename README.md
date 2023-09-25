@@ -1,1 +1,0 @@
-![](file:///Users/zhumadil/Desktop/IMAGE%202023-09-21%2016:28:51.jpg)
