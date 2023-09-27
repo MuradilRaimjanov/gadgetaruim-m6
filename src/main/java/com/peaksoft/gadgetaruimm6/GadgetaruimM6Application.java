@@ -18,6 +18,6 @@ public class GadgetaruimM6Application {
 
     @GetMapping("/")
     public String greetingPage() {
-        return "<h1>Welcome to Gadgetarium-M5 Application!!!<h1/>";
+        return "<h1>Welcome to Gadgetarium-M6 Application!!!<h1/>";
     }
 }
