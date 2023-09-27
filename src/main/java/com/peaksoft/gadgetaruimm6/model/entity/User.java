@@ -5,31 +5,19 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-<<<<<<< HEAD
 import java.time.LocalDate;
-
-@Builder
-@Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "users")
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class User {
-=======
 import java.util.List;
 
 @Entity
 @Setter
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
 @FieldDefaults( level = AccessLevel.PRIVATE)
 public class User {
 
->>>>>>> 644f8337e2bd0ba67544b3c4e7f7858563e78c59
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -42,6 +30,7 @@ public class User {
     String email;
     String password;
     LocalDate createdDate;
+    String phoneNumber;
 
     @Enumerated(EnumType.STRING)
     Role role;
@@ -50,7 +39,7 @@ public class User {
     Feedback feedbacks;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
-    List<Order>orders;
+    List<Order> orders;
 
     @OneToOne
     @JoinColumn(name = "payment_id")

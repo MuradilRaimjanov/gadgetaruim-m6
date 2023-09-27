@@ -22,5 +22,4 @@ public class AuthService {
         return userMapper.mapToResponse(user);
     }
 
-
 }

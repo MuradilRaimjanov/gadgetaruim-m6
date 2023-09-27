@@ -20,8 +20,6 @@ public class UserMapper implements Mapper<RegisterRequest, User, RegisterRespons
                 .password(registerRequest.getPassword())
                 .phoneNumber(registerRequest.getPhoneNumber())
                 .build();
-
-
     }
 
     @Override
