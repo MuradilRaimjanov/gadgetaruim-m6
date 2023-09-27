@@ -21,7 +21,6 @@ public class AuthController {
 
     @PostMapping("/sing-up")
     public ResponseEntity<RegisterResponse> register(@RequestBody @Valid RegisterRequest request) {
-        System.out.println("register method");
         return new ResponseEntity<>(authService.register(request), HttpStatus.OK);
     }
 
