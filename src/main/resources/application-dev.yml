@@ -1,9 +1,10 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5433/test
+    url: jdbc:postgresql://localhost:5433/postgres
     username: postgres
-    password: port
+    password: post
+
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
@@ -11,4 +12,6 @@ spring:
       ddl-auto: create
 
 server:
-  port: 9090
+  port: 7070
+
+

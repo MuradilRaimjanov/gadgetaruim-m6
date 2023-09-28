@@ -5,11 +5,13 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Setter
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
@@ -27,6 +29,8 @@ public class User {
     String lastName;
     String email;
     String password;
+    LocalDate createdDate;
+    String phoneNumber;
 
     @Enumerated(EnumType.STRING)
     Role role;
@@ -35,7 +39,7 @@ public class User {
     Feedback feedbacks;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
-    List<Order>orders;
+    List<Order> orders;
 
     @OneToOne
     @JoinColumn(name = "payment_id")
