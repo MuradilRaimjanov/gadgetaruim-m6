@@ -1,6 +1,5 @@
 package com.peaksoft.gadgetaruimm6.model.dto;
 
-import com.peaksoft.gadgetaruimm6.model.enums.Role;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +17,6 @@ public class RegisterResponse {
      String email;
      String password;
      String phoneNumber;
-     Role role;
+     String role;
     LocalDateTime createdDate;
 }

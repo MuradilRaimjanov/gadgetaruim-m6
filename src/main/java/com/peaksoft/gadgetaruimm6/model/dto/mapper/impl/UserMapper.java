@@ -3,8 +3,8 @@ package com.peaksoft.gadgetaruimm6.model.dto.mapper.impl;
 import com.peaksoft.gadgetaruimm6.model.dto.RegisterRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.RegisterResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.Mapper;
+import com.peaksoft.gadgetaruimm6.model.entity.Role;
 import com.peaksoft.gadgetaruimm6.model.entity.User;
-import com.peaksoft.gadgetaruimm6.model.enums.Role;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -31,7 +31,7 @@ public class UserMapper implements Mapper<RegisterRequest, User, RegisterRespons
                 .email(user.getEmail())
                 .password(user.getPassword())
                 .phoneNumber(user.getPhoneNumber())
-                .role(Role.USER)
+                .role(user.getRoles().stream().map(Role::getRole).toString())
                 .createdDate(LocalDate.now().atStartOfDay())
                 .build();
     }

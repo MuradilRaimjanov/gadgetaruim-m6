@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class GadgetaruimM6Application {
 
     public static void main(String[] args) {
-        log.info("Hello from Gadgetaruim application");
         SpringApplication.run(GadgetaruimM6Application.class, args);
     }
 

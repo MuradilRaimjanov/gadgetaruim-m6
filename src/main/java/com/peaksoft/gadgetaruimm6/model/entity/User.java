@@ -1,12 +1,14 @@
 package com.peaksoft.gadgetaruimm6.model.entity;
 
-import com.peaksoft.gadgetaruimm6.model.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity
 @Setter
@@ -32,8 +34,10 @@ public class User {
     LocalDate createdDate;
     String phoneNumber;
 
-    @Enumerated(EnumType.STRING)
-    Role role;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "cust_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    List<Role> roles = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
     Feedback feedbacks;
