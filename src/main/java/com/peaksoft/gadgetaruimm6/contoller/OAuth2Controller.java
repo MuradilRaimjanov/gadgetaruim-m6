@@ -1,4 +1,4 @@
-package com.peaksoft.gadgetaruimm6.controller;
+package com.peaksoft.gadgetaruimm6.contoller;
 
 
 import com.peaksoft.gadgetaruimm6.model.dto.UserResponse;

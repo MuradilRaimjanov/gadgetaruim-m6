@@ -2,7 +2,8 @@ package com.peaksoft.gadgetaruimm6.model.dto;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -17,6 +18,6 @@ public class UserResponse {
     String lastName;
     String email;
     String password;
-    LocalDateTime created;
+    LocalDate created;
     String roleName;
 }
