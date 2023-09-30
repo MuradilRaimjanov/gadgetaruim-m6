@@ -2,7 +2,6 @@ package com.peaksoft.gadgetaruimm6.model.dto.mapper.impl;
 
 import com.peaksoft.gadgetaruimm6.model.dto.UserResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.Mapper;
-import com.peaksoft.gadgetaruimm6.model.entity.Role;
 import com.peaksoft.gadgetaruimm6.model.entity.User;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +22,7 @@ public class OAuth2Mapper implements Mapper<User, User, UserResponse> {
                 .email(entity.getEmail())
                 .password(entity.getPassword())
                 .created(entity.getCreatedDate())
-                .roleName(entity.getRoles().stream().map(Role::getRole).toString())
+                .roleName(entity.getRole().name())
                 .build();
     }
 }
