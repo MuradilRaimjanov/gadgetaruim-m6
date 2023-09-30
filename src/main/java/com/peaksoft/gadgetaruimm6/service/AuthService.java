@@ -12,12 +12,8 @@ import com.peaksoft.gadgetaruimm6.repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -37,12 +33,12 @@ public class AuthService {
         return userMapper.mapToResponse(user);
     }
 
-    public LoginResponse signIn(LoginRequest request) {
+    public LoginResponse authentication(LoginRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         var user = userRepository.findByEmail(request.getEmail());
         var jwt = jwtUtil.generateToken(user);
-        return LoginMapper.mapToResponse(jwt);
+        return LoginMapper.mapToResponse(jwt,user);
     }
 
 }

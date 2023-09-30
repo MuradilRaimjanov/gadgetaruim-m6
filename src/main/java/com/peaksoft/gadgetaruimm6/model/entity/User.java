@@ -39,6 +39,13 @@ public class User implements UserDetails {
     LocalDate createdDate;
     String phoneNumber;
 
+    @Enumerated(EnumType.STRING)
+    Role role;
+
+    LocalDateTime createdAt;
+
+    LocalDateTime updatedAt;
+
 
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
     Feedback feedbacks;
@@ -54,12 +61,6 @@ public class User implements UserDetails {
     @JoinColumn(name = "address_id")
     Address address;
 
-    @Enumerated(EnumType.STRING)
-    Role role;
-
-    LocalDateTime createdAt;
-
-    LocalDateTime updatedAt;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

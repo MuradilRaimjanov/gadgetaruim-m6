@@ -63,7 +63,7 @@ public class SpringSecurity {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.POST, "/auth/sing-up", "/auth/sign-in").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/auth/sing-up", "/api/auth/sign-in").permitAll()
                         .requestMatchers(HttpMethod.GET, "/auth/**").permitAll()
                         .anyRequest().authenticated()
                 )
