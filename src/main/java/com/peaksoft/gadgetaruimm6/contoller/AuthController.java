@@ -25,8 +25,11 @@ public class AuthController {
     }
 
     @PostMapping("/sign-in")
-    public LoginResponse signIn(@RequestBody LoginRequest request) {
-        return authService.authentication(request);
+    public ResponseEntity<LoginResponse> signIn(@RequestBody LoginRequest request) {
+        if(request == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(authService.authentication(request),HttpStatus.OK);
     }
 
 
