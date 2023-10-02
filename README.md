@@ -1,1 +1,1 @@
-![readmeOrg.drawio.png](..%2F..%2FDownloads%2FreadmeOrg.drawio.png)
+![readmeOrg.drawio.png](readmeOrg.drawio.png)
