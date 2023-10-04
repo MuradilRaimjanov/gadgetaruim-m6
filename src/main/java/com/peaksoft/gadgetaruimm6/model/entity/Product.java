@@ -23,11 +23,13 @@ public class Product {
     int weight;
     String name;
     String image;
-    String price;
+    int price;
     String screen;
     String guarantee;
     String processor;
     String description;
+    int rom;
+    int ram;
 
     @Enumerated(EnumType.STRING)
     CategoryType categoryType;

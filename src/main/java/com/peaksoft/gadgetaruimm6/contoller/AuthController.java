@@ -1,5 +1,6 @@
 package com.peaksoft.gadgetaruimm6.contoller;
 
+import com.peaksoft.gadgetaruimm6.config.jwt.JwtUtil;
 import com.peaksoft.gadgetaruimm6.model.dto.LoginRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.LoginResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.RegisterRequest;
@@ -19,6 +20,8 @@ public class AuthController {
 
     private final AuthService authService;
 
+    private final JwtUtil util;
+
     @PostMapping("/sing-up")
     public ResponseEntity<RegisterResponse> register(@RequestBody @Valid RegisterRequest request) {
         return new ResponseEntity<>(authService.register(request), HttpStatus.OK);
@@ -30,6 +33,11 @@ public class AuthController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(authService.authentication(request),HttpStatus.OK);
+    }
+
+    @GetMapping("/get")
+    public String getUsername(@RequestParam String token){
+        return util.extractUserName(token);
     }
 
 

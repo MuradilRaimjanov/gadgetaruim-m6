@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "delivery")
+@Table(name = "discounts")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Discount {
 
