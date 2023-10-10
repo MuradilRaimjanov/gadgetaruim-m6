@@ -1,5 +1,6 @@
 package com.peaksoft.gadgetaruimm6.model.dto.mapper;
 
+import com.peaksoft.gadgetaruimm6.model.enums.SortBy;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -7,10 +8,11 @@ import java.util.List;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ProductRequest {
+public class FilterRequest {
 
     List<String> brands;
 
@@ -23,4 +25,7 @@ public class ProductRequest {
     int priceFrom;
 
     int priceTo;
+
+    SortBy sortBy;
+    
 }

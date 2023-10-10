@@ -1,37 +1,40 @@
-package com.peaksoft.gadgetaruimm6.service.impl;
+package com.peaksoft.gadgetaruimm6.model.dto.mapper.impl;
 
-import com.peaksoft.gadgetaruimm6.exception.ProductNotFoundException;
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.ProductRequest;
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.ProductResponse;
+import com.peaksoft.gadgetaruimm6.model.dto.mapper.Mapper;
+import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterRequest;
+import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterResponse;
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
 import com.peaksoft.gadgetaruimm6.repository.ProductRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+@Component
 @RequiredArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class ProductService {
-
+@FieldDefaults(level = AccessLevel.PACKAGE, makeFinal = true)
+public class FilterMapper implements Mapper<FilterRequest, List<Product>, List<FilterResponse>> {
     ProductRepository productRepository;
 
-    public List<ProductResponse> filterCatalog(ProductRequest productRequest) {
-        List<Product> list = productRepository.filterCatalog(
-                productRequest.getBrands(),
-                productRequest.getColors(),
-                productRequest.getRams(),
-                productRequest.getRoms(),
-                productRequest.getPriceFrom(),
-                productRequest.getPriceTo());
+    @Override
+    public List<Product> mapToEntity(FilterRequest filterRequest) {
+        return productRepository.filter(filterRequest.getBrands(),
+                filterRequest.getColors(),
+                filterRequest.getRams(),
+                filterRequest.getRoms(),
+                filterRequest.getPriceFrom(),
+                filterRequest.getPriceTo()
+                );
+    }
 
-        List<ProductResponse> responses = new ArrayList<>();
-        list.stream().map(product -> responses.add(new ProductResponse(
+    @Override
+    public List<FilterResponse> mapToResponse(List<Product> products) {
+        List<FilterResponse> responses = new ArrayList<>();
+        products.stream().map(product -> responses.add(new FilterResponse(
                 product.getId(),
                 product.getWeight(),
                 product.getName(),
@@ -60,10 +63,6 @@ public class ProductService {
                 product.getDiameterOfTheRear(),
                 product.getProgramTraining()
         ))).collect(Collectors.toList());
-        if (responses.isEmpty()){
-            throw new ProductNotFoundException();
-        }
         return responses;
     }
-
 }

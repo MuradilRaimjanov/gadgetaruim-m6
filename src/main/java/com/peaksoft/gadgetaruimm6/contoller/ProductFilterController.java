@@ -1,8 +1,8 @@
 package com.peaksoft.gadgetaruimm6.contoller;
 
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.ProductRequest;
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.ProductResponse;
-import com.peaksoft.gadgetaruimm6.service.impl.ProductService;
+import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterRequest;
+import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterResponse;
+import com.peaksoft.gadgetaruimm6.service.impl.ProductFilterService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -17,12 +17,12 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/product")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class ProductController {
+public class ProductFilterController {
 
-    ProductService productService;
+    ProductFilterService productService;
 
     @GetMapping("/filter")
-    public List<ProductResponse> filterCatalog(@RequestBody ProductRequest productRequest) {
+    public List<FilterResponse> filterCatalog(@RequestBody FilterRequest productRequest) {
         return productService.filterCatalog(productRequest);
     }
 

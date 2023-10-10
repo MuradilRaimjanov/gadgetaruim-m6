@@ -24,6 +24,7 @@ public class Feedback {
     LocalDateTime createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
     Product product;
 
     @OneToOne(fetch = FetchType.LAZY)

@@ -11,6 +11,7 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "products")
@@ -68,7 +69,7 @@ public class Product {
     @JoinColumn(name = "basket_id")
     Basket basket;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "discount_id")
     Discount discount;
 
