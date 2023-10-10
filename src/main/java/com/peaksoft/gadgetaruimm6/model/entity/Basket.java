@@ -17,7 +17,6 @@ public class Basket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
     int sum;
     @Column(name = "discount_percent_sum")
     int discountPercentSum;
@@ -25,6 +24,6 @@ public class Basket {
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "basket")
     List<Product>products;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "basket")
     Order order;
 }

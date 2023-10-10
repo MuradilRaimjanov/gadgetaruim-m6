@@ -63,10 +63,9 @@ public class Product {
     String programTraining;
 
     @ManyToOne
-    @JoinColumn(name = "basket_id")
     Basket basket;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "discount_id")
     Discount discount;
 

@@ -16,20 +16,19 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
+    int totalSum;
     @Column(name = "count_of_products")
     int countOfProducts;
 
-    int totalSum;
-
     @ManyToOne
-    @JoinColumn(name = "uses_id")
+    @JoinColumn(name = "user_id")
     User user;
 
     @ManyToOne
     Delivery deliveryPerson;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "basket_id")
     Basket basket;
 
 }
