@@ -38,14 +38,11 @@ public class User implements UserDetails {
     String password;
     LocalDate createdDate;
     String phoneNumber;
+    LocalDateTime createdAt;
+    LocalDateTime updatedAt;
 
     @Enumerated(EnumType.STRING)
     Role role;
-
-    LocalDateTime createdAt;
-
-    LocalDateTime updatedAt;
-
 
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
     Feedback feedbacks;
@@ -53,12 +50,10 @@ public class User implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
     List<Order> orders;
 
-    @OneToOne
-    @JoinColumn(name = "payment_id")
+    @OneToOne(mappedBy = "user")
     Payment payment;
 
-    @OneToOne
-    @JoinColumn(name = "address_id")
+    @OneToOne(mappedBy = "user")
     Address address;
 
 
