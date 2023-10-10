@@ -32,9 +32,6 @@ public class SpringSecurity {
     JwtFilter jwtFilter;
     UserDetailsService userDetailsService;
 
-
-
-
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -59,8 +56,15 @@ public class SpringSecurity {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.POST, "/api/auth/sing-up", "/api/auth/sign-in").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/auth/**").permitAll()
+                        .requestMatchers(
+                                "/swagger-ui/**",
+                                "/swagger-resources/*",
+                                "/v3/api-docs/**",
+                                "/api/auth/sign-in",
+                                "/api/auth/sing-up",
+                                "/api/auth/get",
+                                "/sig-up",
+                                "https://accounts.google.com").permitAll()
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider()).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public enum Color {
     BLACK,
-    WRITE,
+    WHITE,
     RED,
     BLUE,
     GREY,
-    BEIGE
-
+    BEIGE,
+    YELLOW
 }

@@ -23,6 +23,6 @@ public class Discount {
     LocalDate finish;
     int percent;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "discount")
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "discount")
     Product product;
 }

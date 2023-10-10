@@ -66,7 +66,6 @@ public class Product {
     String programTraining;
 
     @ManyToOne
-    @JoinColumn(name = "basket_id")
     Basket basket;
 
     @OneToOne(cascade = CascadeType.ALL)

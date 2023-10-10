@@ -28,6 +28,7 @@ public class Feedback {
     Product product;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     User user;
 
 }
