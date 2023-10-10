@@ -23,7 +23,7 @@ public class UserMapper implements Mapper<RegisterRequest, User, RegisterRespons
                 .firstName(registerRequest.getFirstName())
                 .lastName(registerRequest.getLastName())
                 .email(registerRequest.getEmail())
-                .password(registerRequest.getPassword())
+                .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .phoneNumber(registerRequest.getPhoneNumber())
                 .build();
     }
@@ -35,7 +35,7 @@ public class UserMapper implements Mapper<RegisterRequest, User, RegisterRespons
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .email(user.getEmail())
-                .password(passwordEncoder.encode(user.getPassword()))
+                .password(user.getPassword())
                 .phoneNumber(user.getPhoneNumber())
                 .role(Role.ROLE_USER)
                 .createdDate(LocalDate.now().atStartOfDay())

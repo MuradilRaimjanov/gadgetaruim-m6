@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -22,35 +21,32 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
-@FieldDefaults( level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name="first_name")
+    @Column(name = "first_name")
     String firstName;
 
-    @Column(name="last_name")
+    @Column(name = "last_name")
     String lastName;
     String email;
     String password;
     LocalDate createdDate;
     String phoneNumber;
+    String otp;
+    LocalDateTime otpGeneratedTime;
 
     @Enumerated(EnumType.STRING)
     Role role;
 
-    LocalDateTime createdAt;
-
-    LocalDateTime updatedAt;
-
-
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
     Feedback feedbacks;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     List<Order> orders;
 
     @OneToOne
@@ -60,7 +56,6 @@ public class User implements UserDetails {
     @OneToOne
     @JoinColumn(name = "address_id")
     Address address;
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
