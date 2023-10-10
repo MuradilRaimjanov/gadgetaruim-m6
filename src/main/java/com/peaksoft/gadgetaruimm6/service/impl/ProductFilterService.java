@@ -5,7 +5,7 @@ import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.FilterMapper;
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
-import com.peaksoft.gadgetaruimm6.repository.ProductRepository;
+import com.peaksoft.gadgetaruimm6.repository.ProductFilterRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -18,7 +18,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ProductFilterService {
 
-    ProductRepository productRepository;
+    ProductFilterRepository productRepository;
     FilterMapper productFilterMapper;
 
     public List<FilterResponse> filterCatalog(FilterRequest productRequest) {

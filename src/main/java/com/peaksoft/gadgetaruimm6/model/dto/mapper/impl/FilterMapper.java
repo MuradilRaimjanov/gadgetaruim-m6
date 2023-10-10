@@ -4,7 +4,7 @@ import com.peaksoft.gadgetaruimm6.model.dto.mapper.Mapper;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterResponse;
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
-import com.peaksoft.gadgetaruimm6.repository.ProductRepository;
+import com.peaksoft.gadgetaruimm6.repository.ProductFilterRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PACKAGE, makeFinal = true)
 public class FilterMapper implements Mapper<FilterRequest, List<Product>, List<FilterResponse>> {
-    ProductRepository productRepository;
+    ProductFilterRepository productRepository;
 
     @Override
     public List<Product> mapToEntity(FilterRequest filterRequest) {
