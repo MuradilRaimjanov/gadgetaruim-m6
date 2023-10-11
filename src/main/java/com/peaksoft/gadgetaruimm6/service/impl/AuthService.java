@@ -1,4 +1,4 @@
-package com.peaksoft.gadgetaruimm6.service;
+package com.peaksoft.gadgetaruimm6.service.impl;
 
 import com.peaksoft.gadgetaruimm6.model.dto.RegisterRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.RegisterResponse;

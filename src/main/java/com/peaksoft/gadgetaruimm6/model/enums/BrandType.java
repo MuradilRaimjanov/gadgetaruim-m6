@@ -5,9 +5,14 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public enum CategoryType {
-    SMARTPHONES,
-    LAPTOPS,
-    TABLETS,
-    SMARTWATCH
+public enum BrandType {
+    SAMSUNG,
+    HONOR,
+    HUAWEI,
+    APPLE,
+    NOKIA,
+    IPAD,
+    REALMI ,
+    VIVO ,
+    OPPO
 }

@@ -5,9 +5,9 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public enum CategoryType {
-    SMARTPHONES,
-    LAPTOPS,
-    TABLETS,
-    SMARTWATCH
+public enum Wireless {
+    BLUETOOTH,
+    WI_FI,
+    GPS,
+    NFS
 }

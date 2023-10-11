@@ -5,9 +5,8 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public enum CategoryType {
-    SMARTPHONES,
-    LAPTOPS,
-    TABLETS,
-    SMARTWATCH
+public enum Gender {
+    MALE,
+    FEMALE,
+    UNISEX
 }

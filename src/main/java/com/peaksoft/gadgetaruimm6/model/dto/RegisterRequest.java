@@ -30,6 +30,8 @@ public class RegisterRequest {
     @Length(min = 8, max = 20, message = " пароль должен содержать не менее от 8 до 20 символов, в том числе цифры и спецсимволов")
     String password;
 
+    String repeatPassword;
+
     @NotBlank(message = "Phone number должен быть заполнен")
     String phoneNumber;
 

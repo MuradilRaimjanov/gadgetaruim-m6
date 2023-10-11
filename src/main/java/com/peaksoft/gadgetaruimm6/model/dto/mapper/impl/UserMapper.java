@@ -31,8 +31,8 @@ public class UserMapper implements Mapper<RegisterRequest, User, RegisterRespons
                 .email(user.getEmail())
                 .password(user.getPassword())
                 .phoneNumber(user.getPhoneNumber())
-                .role(user.getRoles().stream().map(Role::getRole).toString())
-                .createdDate(LocalDate.now().atStartOfDay())
+                .roleName(user.getRoles().stream().map(Role::getRole).toString())
+                .createdDate(LocalDate.from(LocalDate.now().atStartOfDay()))
                 .build();
     }
 }

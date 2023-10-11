@@ -10,8 +10,15 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 175128033513-hssnq4hpb8h6erqti2hha0f7ljnmruse.apps.googleusercontent.com
+            client-secret: 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
 
 server:
-  port: 7070
+  port: 8081
 
 
