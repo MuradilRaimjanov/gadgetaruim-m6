@@ -29,8 +29,6 @@ public class Product {
     String guarantee;
     String processor;
     String description;
-    int rom;
-    int ram;
 
     @Enumerated(EnumType.STRING)
     CategoryType categoryType;
@@ -42,6 +40,8 @@ public class Product {
     OS os;
     @Enumerated(EnumType.STRING)
     Memory memory;
+    @Enumerated(EnumType.STRING)
+    MemoryRam memoryRam;
     @Column(name = "release_date")
     LocalDate releaseDate;
     @Column(name = "quantity_sim_cards")

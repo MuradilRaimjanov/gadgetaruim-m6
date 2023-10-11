@@ -22,13 +22,12 @@ public class FilterResponse {
     String guarantee;
     String processor;
     String description;
-    int rom;
-    int ram;
     CategoryType categoryType;
     Brand brand;
     Color color;
     OS os;
     Memory memory;
+    MemoryRam memoryRam;
     LocalDate releaseDate;
     int quantitySimCards;
     int articleNumber;

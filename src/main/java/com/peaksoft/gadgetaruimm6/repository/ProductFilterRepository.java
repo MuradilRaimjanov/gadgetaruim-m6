@@ -1,6 +1,8 @@
 package com.peaksoft.gadgetaruimm6.repository;
 
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
+import com.peaksoft.gadgetaruimm6.model.enums.Memory;
+import com.peaksoft.gadgetaruimm6.model.enums.MemoryRam;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,62 +15,62 @@ public interface ProductFilterRepository extends JpaRepository<Product, Long> {
 
    @Query("""
            SELECT p FROM Product p WHERE
-           cast(p.brand as string) IN :brands
-           OR cast(p.color as string) IN :colors
-           OR p.ram IN :rams
-           OR p.rom IN :roms
-           OR p.price between :priceFrom and :priceTo
+           CAST(p.brand as string) IN :brands
+           OR CAST(p.color as string) IN :colors
+           OR CAST(p.memoryRam as string) IN :rams
+           OR CAST(p.memory as string) IN :roms
+           OR p.price BETWEEN :priceFrom AND :priceTo
            """)
     List<Product> filter(@Param("brands") List<String> brands,
                          @Param("colors")List<String> colors,
-                         @Param("rams") List<Integer> rams,
-                         @Param("roms") List<Integer> roms,
+                         @Param("rams") List<String> rams,
+                         @Param("roms") List<String> roms,
                          @Param("priceFrom") int priceFrom,
                          @Param("priceTo") int priceTo);
 
     @Query("""
            SELECT p FROM Product p WHERE
-           cast(p.brand as string) IN :brands
-           OR cast(p.color as string) IN :colors
-           OR p.ram IN :rams
-           OR p.rom IN :roms
+           CAST(p.brand as string) IN :brands
+           OR CAST(p.color as string) IN :colors
+           OR CAST(p.memoryRam as string) IN :rams
+           OR CAST(p.memory as string) IN :roms
            OR p.price BETWEEN :priceFrom AND :priceTo ORDER BY p.price ASC
            """)
     List<Product> filterAsc(@Param("brands") List<String> brands,
                          @Param("colors")List<String> colors,
-                         @Param("rams") List<Integer> rams,
-                         @Param("roms") List<Integer> roms,
+                         @Param("rams") List<String> rams,
+                         @Param("roms") List<String> roms,
                          @Param("priceFrom") int priceFrom,
                          @Param("priceTo") int priceTo);
 
     @Query("""
            SELECT p FROM Product p WHERE
-           cast(p.brand as string) IN :brands
-           OR cast(p.color as string) IN :colors
-           OR p.ram IN :rams
-           OR p.rom IN :roms
+           CAST(p.brand AS string) IN :brands
+           OR CAST(p.color AS string) IN :colors
+           OR CAST(p.memoryRam as string) IN :rams
+           OR CAST(p.memory as string) IN :roms
            OR p.price BETWEEN :priceFrom AND :priceTo ORDER BY p.price DESC
            """)
     List<Product> filterDesc(@Param("brands") List<String> brands,
                          @Param("colors")List<String> colors,
-                         @Param("rams") List<Integer> rams,
-                         @Param("roms") List<Integer> roms,
+                         @Param("rams") List<String> rams,
+                         @Param("roms") List<String> roms,
                          @Param("priceFrom") int priceFrom,
                          @Param("priceTo") int priceTo);
 
     @Query("""
            SELECT p FROM Product p WHERE
-           cast(p.brand as string) IN :brands
-           OR cast(p.color as string) IN :colors
-           OR p.ram IN :rams
-           OR p.rom IN :roms
-           OR p.price between :priceFrom and :priceTo
+           CAST(p.brand AS string) IN :brands
+           OR CAST(p.color AS string) IN :colors
+           OR CAST(p.memoryRam as string) IN :rams
+           OR CAST(p.memory as string) IN :roms
+           OR p.price BETWEEN :priceFrom AND :priceTo
            ORDER BY p.discount.percent DESC
            """)
     List<Product> filterSale(@Param("brands") List<String> brands,
                          @Param("colors")List<String> colors,
-                         @Param("rams") List<Integer> rams,
-                         @Param("roms") List<Integer> roms,
+                         @Param("rams") List<String> rams,
+                         @Param("roms") List<String> roms,
                          @Param("priceFrom") int priceFrom,
                          @Param("priceTo") int priceTo);
 
@@ -79,40 +81,40 @@ public interface ProductFilterRepository extends JpaRepository<Product, Long> {
            """)
     List<Product> filterSaleUp(@Param("brands") List<String> brands,
                             @Param("colors")List<String> colors,
-                            @Param("rams") List<Integer> rams,
-                            @Param("roms") List<Integer> roms,
+                            @Param("rams") List<String> rams,
+                            @Param("roms") List<String> roms,
                             @Param("priceFrom") int priceFrom,
                             @Param("priceTo") int priceTo);
 
     @Query("""
            SELECT p FROM Product p where
-           cast(p.brand as string) IN :brands
-           OR cast(p.color as string) IN :colors
-           OR p.ram IN :rams
-           OR p.rom IN :roms
-           OR p.price between :priceFrom and :priceTo
-           ORDER BY cast(p.releaseDate as localdate) DESC
+           CAST(p.brand AS string) IN :brands
+           OR CAST(p.color AS string) IN :colors
+           OR CAST(p.memoryRam as string) IN :rams
+           OR CAST(p.memory as string) IN :roms
+           OR p.price BETWEEN :priceFrom AND :priceTo
+           ORDER BY CAST(p.releaseDate AS localdate) DESC
            """)
     List<Product> filterRec(@Param("brands") List<String> brands,
                                @Param("colors")List<String> colors,
-                               @Param("rams") List<Integer> rams,
-                               @Param("roms") List<Integer> roms,
+                               @Param("rams") List<String> rams,
+                               @Param("roms") List<String> roms,
                                @Param("priceFrom") int priceFrom,
                                @Param("priceTo") int priceTo);
 
     @Query("""
            SELECT p FROM Product p WHERE
-           cast(p.brand as string) IN :brands
-           OR cast(p.color as string) IN :colors
-           OR p.ram IN :rams
-           OR p.rom IN :roms
-           OR p.price between :priceFrom and :priceTo
-           ORDER BY cast(p.releaseDate as localdate) DESC
+           CAST(p.brand AS string) IN :brands
+           OR CAST(p.color AS string) IN :colors
+           OR CAST(p.memoryRam as string) IN :rams
+           OR CAST(p.memory as string) IN :roms
+           OR p.price BETWEEN :priceFrom AND :priceTo
+           ORDER BY CAST(p.releaseDate AS localdate) DESC
            """)
     List<Product> filterNew(@Param("brands") List<String> brands,
                             @Param("colors")List<String> colors,
-                            @Param("rams") List<Integer> rams,
-                            @Param("roms") List<Integer> roms,
+                            @Param("rams") List<String> rams,
+                            @Param("roms") List<String> roms,
                             @Param("priceFrom") int priceFrom,
                             @Param("priceTo") int priceTo);
 
