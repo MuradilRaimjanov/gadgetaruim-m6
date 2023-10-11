@@ -7,7 +7,6 @@ public enum SortBy {
     BY_ASC("ASC"),
     BY_DESC("DESC"),
     BY_NEW("ByNew"),
-
     BY_REC("ByRec");
 
     private String name;

@@ -22,8 +22,6 @@ public class AuthController {
 
     private final AuthService authService;
 
-    private final JwtUtil util;
-
     @PostMapping("/sing-up")
     public ResponseEntity<RegisterResponse> register(@RequestBody @Valid RegisterRequest request) {
         return new ResponseEntity<>(authService.register(request), HttpStatus.OK);
