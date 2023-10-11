@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "delivery")
+@Table(name = "discounts")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Discount {
 
@@ -23,6 +23,6 @@ public class Discount {
     LocalDate finish;
     int percent;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "discount")
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "discount")
     Product product;
 }
