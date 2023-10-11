@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/auth")
+@RequestMapping("/api/auth2")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class OAuth2Controller {
 
     OAuth2Service userService;
 
-    @GetMapping("/sing-in")
+    @GetMapping("/sign-up")
     public UserResponse registration(OAuth2AuthenticationToken oAuth2AuthenticationToken) {
         return userService.save(oAuth2AuthenticationToken);
     }

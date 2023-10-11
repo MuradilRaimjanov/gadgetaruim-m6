@@ -25,7 +25,7 @@ public class Product {
     int weight;
     String name;
     String image;
-    String price;
+    int price;
     String screen;
     String guarantee;
     String processor;
@@ -52,6 +52,8 @@ public class Product {
     OS os;
     @Enumerated(EnumType.STRING)
     Memory memory;
+    @Enumerated(EnumType.STRING)
+    MemoryRam memoryRam;
     @Column(name = "release_date")
     LocalDate releaseDate;
     @Column(name = "quantity_sim_cards")
@@ -76,10 +78,9 @@ public class Product {
     String programTraining;
 
     @ManyToOne
-    @JoinColumn(name = "basket_id")
     Basket basket;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "discount_id")
     Discount discount;
 

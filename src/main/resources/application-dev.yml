@@ -17,8 +17,12 @@ spring:
           google:
             client-id: 175128033513-hssnq4hpb8h6erqti2hha0f7ljnmruse.apps.googleusercontent.com
             client-secret: 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
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
 
 server:
-  port: 8081
+  port: 7070
 
 
