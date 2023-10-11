@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,11 +27,12 @@ public class AuthService {
     UserMapper userMapper;
     AuthenticationManager authenticationManager;
     JwtUtil jwtUtil;
+    PasswordEncoder passwordEncoder;
 
     public RegisterResponse register(RegisterRequest registerRequest) {
         User user = userMapper.mapToEntity(registerRequest);
-        user.setPassword(user.getPassword());
         user.setRole(Role.ROLE_USER);
+        user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
         userRepository.save(user);
         return userMapper.mapToResponse(user);
     }

@@ -11,6 +11,7 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "products")
@@ -23,7 +24,7 @@ public class Product {
     int weight;
     String name;
     String image;
-    String price;
+    int price;
     String screen;
     String guarantee;
     String processor;
@@ -39,6 +40,8 @@ public class Product {
     OS os;
     @Enumerated(EnumType.STRING)
     Memory memory;
+    @Enumerated(EnumType.STRING)
+    MemoryRam memoryRam;
     @Column(name = "release_date")
     LocalDate releaseDate;
     @Column(name = "quantity_sim_cards")
