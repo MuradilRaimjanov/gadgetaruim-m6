@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth2")
-@Tag(name="o authorization2 controller")
+@Tag(name="Google registration controller")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class OAuth2Controller {
 
     OAuth2Service userService;
 
     @GetMapping("/sign-up")
-    @Operation(description = "this method for registering with Google ")
+    @Operation(description = "This method for registering with Google ")
     public UserResponse registration(OAuth2AuthenticationToken oAuth2AuthenticationToken) {
         return userService.save(oAuth2AuthenticationToken);
     }

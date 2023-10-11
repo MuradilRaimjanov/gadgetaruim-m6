@@ -17,19 +17,19 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
-@Tag(name = "authorization controller")
+@Tag(name = "Authorization controller")
 public class AuthController {
 
     private final AuthService authService;
 
-    @PostMapping("/sing-up")
-    @Operation(description = "this method is for registration ")
+    @PostMapping("/sign-up")
+    @Operation(description = "This method  for registration ")
     public ResponseEntity<RegisterResponse> register(@RequestBody @Valid RegisterRequest request) {
         return new ResponseEntity<>(authService.register(request), HttpStatus.OK);
     }
 
-    @PostMapping("/sign-in"
-    Operation(description = "this method is for authentication ")
+    @PostMapping("/sign-in")
+    @Operation(description = "This method is for authentication ")
     public ResponseEntity<LoginResponse> signIn(@RequestBody LoginRequest request) {
         if(request == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
