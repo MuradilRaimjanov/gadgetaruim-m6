@@ -17,9 +17,20 @@ public class Basket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
     int sum;
     @Column(name = "discount_percent_sum")
+
     int discountPercentSum;
+
+    @Column(name = "quantity_of_products")
+    int quantityOfProducts;
+
+    @Column(name = "end_sum")
+    int endSum;
+
+    @OneToOne
+    User user;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "basket")
     List<Product>products;
