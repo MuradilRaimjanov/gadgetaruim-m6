@@ -23,7 +23,7 @@ spring:
     protocol: smtp
 
 server:
-  port: 8080
+  port: 9090
 
 secret-key: 984hg493gh0439rthr0429uruj2309h937gc763fe87t3f89723gf
 

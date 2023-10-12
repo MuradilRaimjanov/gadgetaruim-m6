@@ -33,8 +33,6 @@ public class AuthService {
     UserMapper userMapper;
     AuthenticationManager authenticationManager;
     JwtUtil jwtUtil;
-    JavaMailSender mailSender;
-    PasswordEncoder passwordEncoder;
 
     public RegisterResponse register(RegisterRequest registerRequest) {
         User user = userMapper.mapToEntity(registerRequest);

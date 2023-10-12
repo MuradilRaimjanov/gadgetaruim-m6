@@ -15,7 +15,6 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 public class UserMapper implements Mapper<RegisterRequest, User, RegisterResponse> {
 
-    private final PasswordEncoder passwordEncoder;
 
     @Override
     public User mapToEntity(RegisterRequest registerRequest) {
