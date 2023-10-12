@@ -87,5 +87,4 @@ public class AuthService {
         message.setSubject(subject);
         mailSender.send(message);
     }
-
 }
