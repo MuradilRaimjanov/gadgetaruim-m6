@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -38,8 +37,8 @@ public class User implements UserDetails {
     String password;
     LocalDate createdDate;
     String phoneNumber;
-    String otp;
-    LocalDateTime otpGeneratedTime;
+    String token;
+    LocalDateTime tokenCreated;
 
     @Enumerated(EnumType.STRING)
     Role role;
