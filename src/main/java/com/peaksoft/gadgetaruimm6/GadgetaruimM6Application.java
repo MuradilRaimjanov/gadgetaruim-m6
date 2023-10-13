@@ -19,4 +19,6 @@ public class GadgetaruimM6Application {
     public String greetingPage() {
         return "<h1>Welcome to Gadgetarium-M6 Application!!!<h1/>";
     }
+
+
 }

@@ -5,7 +5,10 @@ import com.peaksoft.gadgetaruimm6.model.dto.RegisterResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.Mapper;
 import com.peaksoft.gadgetaruimm6.model.entity.User;
 import com.peaksoft.gadgetaruimm6.model.enums.Role;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -13,13 +16,18 @@ import java.time.LocalDate;
 @Component
 @RequiredArgsConstructor
 public class UserMapper implements Mapper<RegisterRequest, User, RegisterResponse> {
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
+
     @Override
     public User mapToEntity(RegisterRequest registerRequest) {
         return User.builder()
                 .firstName(registerRequest.getFirstName())
                 .lastName(registerRequest.getLastName())
                 .email(registerRequest.getEmail())
-                .password(registerRequest.getPassword())
+                .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .phoneNumber(registerRequest.getPhoneNumber())
                 .build();
     }
@@ -34,7 +42,7 @@ public class UserMapper implements Mapper<RegisterRequest, User, RegisterRespons
                 .password(user.getPassword())
                 .phoneNumber(user.getPhoneNumber())
                 .role(Role.ROLE_USER)
-                .createdDate(LocalDate.from(LocalDate.now().atStartOfDay()).atStartOfDay())
+                .createdDate(LocalDate.now().atStartOfDay())
                 .build();
     }
 }

@@ -37,13 +37,13 @@ public class User implements UserDetails {
     String password;
     LocalDate createdDate;
     String phoneNumber;
-    LocalDateTime createdAt;
-    LocalDateTime updatedAt;
+    String token;
+    LocalDateTime tokenCreated;
 
     @Enumerated(EnumType.STRING)
     Role role;
 
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
     Feedback feedbacks;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
