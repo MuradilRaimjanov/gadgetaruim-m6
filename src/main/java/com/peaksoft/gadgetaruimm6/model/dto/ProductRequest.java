@@ -42,5 +42,9 @@ public class ProductRequest {
     String diameterOfTheRear;
     String programTraining;
     Long brandId;
-
+    String ram;
+    String rom;
+    SortBy sortBy;
+    int priceFrom;
+    int priceTo;
 }

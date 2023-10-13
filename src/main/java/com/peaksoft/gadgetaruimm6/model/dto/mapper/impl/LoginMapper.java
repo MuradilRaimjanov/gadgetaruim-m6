@@ -12,7 +12,6 @@ public class LoginMapper {
 
         return LoginResponse.builder()
                 .email(user.getEmail())
-                .role(user.getRole())
                 .token(token)
                 .build();
     }

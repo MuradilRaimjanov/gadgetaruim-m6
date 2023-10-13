@@ -1,6 +1,11 @@
 package com.peaksoft.gadgetaruimm6.model.enums;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@NoArgsConstructor
 public enum Role {
-    ROLE_ADMIN,
-    ROLE_USER
+    ROLE_USER,
+    ROLE_ADMIN
 }

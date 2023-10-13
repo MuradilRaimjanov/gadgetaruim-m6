@@ -22,7 +22,7 @@ public class OAuth2Mapper implements Mapper<User, User, UserResponse> {
                 .email(entity.getEmail())
                 .password(entity.getPassword())
                 .created(entity.getCreatedDate())
-                .roleName(entity.getRole().name())
+                .roleName(String.valueOf(entity.getRole()))
                 .build();
     }
 }

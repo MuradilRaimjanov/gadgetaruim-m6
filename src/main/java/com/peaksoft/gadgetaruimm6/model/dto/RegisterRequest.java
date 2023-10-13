@@ -1,5 +1,6 @@
 package com.peaksoft.gadgetaruimm6.model.dto;
 
+import com.peaksoft.gadgetaruimm6.model.enums.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -34,6 +35,8 @@ public class RegisterRequest {
 
     @NotBlank(message = "Phone number должен быть заполнен")
     String phoneNumber;
+
+    Role role;
 
 
 }

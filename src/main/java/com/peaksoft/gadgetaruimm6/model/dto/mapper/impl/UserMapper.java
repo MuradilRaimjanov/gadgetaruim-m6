@@ -6,7 +6,6 @@ import com.peaksoft.gadgetaruimm6.model.dto.mapper.Mapper;
 import com.peaksoft.gadgetaruimm6.model.entity.User;
 import com.peaksoft.gadgetaruimm6.model.enums.Role;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -34,8 +33,8 @@ public class UserMapper implements Mapper<RegisterRequest, User, RegisterRespons
                 .email(user.getEmail())
                 .password(user.getPassword())
                 .phoneNumber(user.getPhoneNumber())
-                .roleName(user.getRoles().stream().map(Role::getRole).toString())
-                .createdDate(LocalDate.from(LocalDate.now().atStartOfDay()))
+                .role(Role.ROLE_USER)
+                .createdDate(LocalDate.from(LocalDate.now().atStartOfDay()).atStartOfDay())
                 .build();
     }
 }

@@ -1,6 +1,7 @@
 package com.peaksoft.gadgetaruimm6.service.impl;
 
 import com.peaksoft.gadgetaruimm6.exception.NotFoundException;
+import com.peaksoft.gadgetaruimm6.exception.ProductNotFoundException;
 import com.peaksoft.gadgetaruimm6.model.dto.ProductRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.ProductResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.ProductMapper;
@@ -77,7 +78,84 @@ public class ProductService implements ServiceLayer<ProductRequest, ProductRespo
         allProduct.setSlopeOfTheTreadmill(productRequest.getSlopeOfTheTreadmill());
         allProduct.setDiameterOfTheRear(productRequest.getDiameterOfTheRear());
         allProduct.setProgramTraining(productRequest.getProgramTraining());
-        return productMapper.mapToResponse(productRepository.save(allProduct));
+
+        switch (productRequest.getSortBy()) {
+            case BY_NEW -> {
+                allProduct = (Product) productRepository.filterNew(
+                        productRequest.getBrandId(),
+                        productRequest.getColor(),
+                        productRequest.getRam(),
+                        productRequest.getRom(),
+                        productRequest.getPriceFrom(),
+                        productRequest.getPriceTo()
+                );
+            }
+            case BY_ASC -> {
+                allProduct = (Product) productRepository.filterAsc(
+                        productRequest.getBrandId(),
+                        productRequest.getColor(),
+                        productRequest.getRam(),
+                        productRequest.getRom(),
+                        productRequest.getPriceFrom(),
+                        productRequest.getPriceTo()
+                );
+            }
+            case BY_DESC -> {
+                allProduct = (Product) productRepository.filterDesc(
+                        productRequest.getBrandId(),
+                        productRequest.getColor(),
+                        productRequest.getRam(),
+                        productRequest.getRom(),
+                        productRequest.getPriceFrom(),
+                        productRequest.getPriceTo()
+                );
+            }
+            case BY_SALE -> {
+                allProduct = (Product) productRepository.filterSale(
+                        productRequest.getBrandId(),
+                        productRequest.getColor(),
+                        productRequest.getRam(),
+                        productRequest.getRom(),
+                        productRequest.getPriceFrom(),
+                        productRequest.getPriceTo()
+                );
+            }
+            case BY_SALE_UP -> {
+                allProduct = (Product) productRepository.filterSaleUp(
+                        productRequest.getBrandId(),
+                        productRequest.getColor(),
+                        productRequest.getRam(),
+                        productRequest.getRom(),
+                        productRequest.getPriceFrom(),
+                        productRequest.getPriceTo()
+                );
+            }
+            case BY_REC -> {
+                allProduct = (Product) productRepository.filterRec(
+                        productRequest.getBrandId(),
+                        productRequest.getColor(),
+                        productRequest.getRam(),
+                        productRequest.getRom(),
+                        productRequest.getPriceFrom(),
+                        productRequest.getPriceTo()
+                );
+            }
+            default -> {
+                allProduct = (Product) productRepository.filter(
+                        productRequest.getBrandId(),
+                        productRequest.getColor(),
+                        productRequest.getRam(),
+                        productRequest.getRom(),
+                        productRequest.getPriceFrom(),
+                        productRequest.getPriceTo()
+                );
+            }
+        }
+        if (allProduct == null) {
+            throw new ProductNotFoundException("ProductList is empty!!!");
+        } else {
+            return productMapper.mapToResponse(productRepository.save(allProduct));
+        }
     }
 
     @Override

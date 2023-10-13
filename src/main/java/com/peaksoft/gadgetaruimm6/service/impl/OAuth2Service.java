@@ -3,7 +3,6 @@ package com.peaksoft.gadgetaruimm6.service.impl;
 import com.peaksoft.gadgetaruimm6.model.dto.UserResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.OAuth2Mapper;
 import com.peaksoft.gadgetaruimm6.model.entity.User;
-import com.peaksoft.gadgetaruimm6.model.enums.Role;
 import com.peaksoft.gadgetaruimm6.repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +12,6 @@ import org.springframework.security.oauth2.client.authentication.OAuth2Authentic
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.Map;
 
 @Service
@@ -34,7 +32,7 @@ public class OAuth2Service {
         user.setEmail((String) userGoogle.get("email"));
         user.setCreatedDate(LocalDate.now());
         user.setPassword(passwordEncoder.encode(userGoogle.get("name").toString()));
-        user.setRole(Role.ROLE_USER);
+//        user.setRole(Role.ROLE_USER);
 
         userRepository.save(user);
         return OAuth2Mapper.mapToResponse(user);

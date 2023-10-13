@@ -45,7 +45,7 @@ public class FilterMapper implements Mapper<FilterRequest, List<Product>, List<F
                 product.getProcessor(),
                 product.getDescription(),
                 product.getCategoryType(),
-                product.getBrand(),
+                product.getBrands().,
                 product.getColor(),
                 product.getOs(),
                 product.getMemory(),

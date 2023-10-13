@@ -50,5 +50,6 @@ public class ProductResponse {
     Discount discount;
     List<Feedback> feedbacks;
     LocalDate localDate;
+    SortBy sortBy;
     Long quantityOfProduct;
 }
