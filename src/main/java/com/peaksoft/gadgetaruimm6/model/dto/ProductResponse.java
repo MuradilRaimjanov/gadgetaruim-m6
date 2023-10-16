@@ -36,6 +36,7 @@ public class ProductResponse {
     Color color;
     OS os;
     Memory memory;
+    MemoryRam memoryRam;
     LocalDate releaseDate;
     int quantitySimCards;
     int articleNumber;

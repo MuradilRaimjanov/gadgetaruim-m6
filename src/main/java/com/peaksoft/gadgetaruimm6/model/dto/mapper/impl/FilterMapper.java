@@ -3,6 +3,7 @@ package com.peaksoft.gadgetaruimm6.model.dto.mapper.impl;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.Mapper;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterResponse;
+import com.peaksoft.gadgetaruimm6.model.entity.Brand;
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
 import com.peaksoft.gadgetaruimm6.repository.ProductFilterRepository;
 import lombok.AccessLevel;
@@ -45,7 +46,7 @@ public class FilterMapper implements Mapper<FilterRequest, List<Product>, List<F
                 product.getProcessor(),
                 product.getDescription(),
                 product.getCategoryType(),
-                product.getBrands().,
+                (Brand) product.getBrands(),
                 product.getColor(),
                 product.getOs(),
                 product.getMemory(),

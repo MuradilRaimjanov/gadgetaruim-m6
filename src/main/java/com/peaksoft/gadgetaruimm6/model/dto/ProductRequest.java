@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -29,7 +30,8 @@ public class ProductRequest {
     String filePDF;
     Color color;
     OS os;
-    Memory memory;
+    List<MemoryRam> memoryRam;
+    List<Memory> memory;
     LocalDate releaseDate;
     int quantitySimCards;
     int articleNumber;
@@ -42,9 +44,7 @@ public class ProductRequest {
     String diameterOfTheRear;
     String programTraining;
     Long brandId;
-    String ram;
-    String rom;
     SortBy sortBy;
-    int priceFrom;
     int priceTo;
+    int priceFrom;
 }

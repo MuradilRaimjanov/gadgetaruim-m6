@@ -1,8 +1,6 @@
 package com.peaksoft.gadgetaruimm6.repository;
 
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
-import com.peaksoft.gadgetaruimm6.model.enums.Memory;
-import com.peaksoft.gadgetaruimm6.model.enums.MemoryRam;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

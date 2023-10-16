@@ -3,6 +3,7 @@ package com.peaksoft.gadgetaruimm6.contoller;
 import com.peaksoft.gadgetaruimm6.model.dto.BrandResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.ProductRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.ProductResponse;
+import com.peaksoft.gadgetaruimm6.model.enums.SortBy;
 import com.peaksoft.gadgetaruimm6.service.impl.BrandService;
 import com.peaksoft.gadgetaruimm6.service.impl.ProductService;
 import lombok.AccessLevel;
@@ -40,8 +41,8 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<ProductResponse> findAllProduct() {
-        return productService.findAll();
+    public List<ProductResponse> findAllProduct(@RequestParam("sort")SortBy sortBy) {
+        return productService.findAllProducts(sortBy);
     }
 
     @PutMapping("{id}")

@@ -4,6 +4,7 @@ import com.peaksoft.gadgetaruimm6.model.dto.ProductRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.ProductResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.Mapper;
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
+import com.peaksoft.gadgetaruimm6.repository.ProductRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 public class ProductMapper implements Mapper<ProductRequest, Product, ProductResponse> {
 
     BrandMapper brandMapper;
+    ProductRepository productRepository;
 
     @Override
     public Product mapToEntity(ProductRequest productRequest) {
@@ -25,7 +27,7 @@ public class ProductMapper implements Mapper<ProductRequest, Product, ProductRes
                 .weight(productRequest.getWeight())
                 .name(productRequest.getName())
                 .image(productRequest.getImage())
-                .price(productRequest.getPrice())
+                .price(Integer.parseInt(productRequest.getPrice()))
                 .screen(productRequest.getScreen())
                 .guarantee(productRequest.getGuarantee())
                 .processor(productRequest.getProcessor())
@@ -39,7 +41,6 @@ public class ProductMapper implements Mapper<ProductRequest, Product, ProductRes
                 .categoryType(productRequest.getCategoryType())
                 .color(productRequest.getColor())
                 .os(productRequest.getOs())
-                .memory(productRequest.getMemory())
                 .releaseDate(LocalDate.from(LocalDate.now()))
                 .quantitySimCards(productRequest.getQuantitySimCards())
                 .quantityOfProducts(productRequest.getQuantityOfProduct())
@@ -62,7 +63,7 @@ public class ProductMapper implements Mapper<ProductRequest, Product, ProductRes
                 .weight(product.getWeight())
                 .name(product.getName())
                 .image(product.getImage())
-                .price(product.getPrice())
+                .price(String.valueOf(product.getPrice()))
                 .brands(product.getBrands().stream().map(brandMapper::mapToResponse).collect(Collectors.toList()))
                 .screen(product.getScreen())
                 .guarantee(product.getGuarantee())

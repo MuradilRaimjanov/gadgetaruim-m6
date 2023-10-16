@@ -1,5 +1,6 @@
 package com.peaksoft.gadgetaruimm6.model.dto;
 
+import com.peaksoft.gadgetaruimm6.model.enums.Role;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,9 +10,8 @@ public class LoginResponse {
     String token;
     String email;
 
-    public LoginResponse(String token, Role role, String email) {
+    public LoginResponse(String token, String email) {
         this.token = token;
-        this.role = role;
         this.email = email;
     }
 

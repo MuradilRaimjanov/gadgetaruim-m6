@@ -15,14 +15,6 @@ spring:
     port: 587
     username: temuchi500@gmail.com
     password: vvottpyezfoubusd
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: 175128033513-hssnq4hpb8h6erqti2hha0f7ljnmruse.apps.googleusercontent.com
-            client-secret: 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
-      ddl-auto: update
     properties:
       mail:
         smtp:
