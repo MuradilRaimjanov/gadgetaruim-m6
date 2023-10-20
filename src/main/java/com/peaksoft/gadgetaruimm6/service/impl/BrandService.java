@@ -3,6 +3,7 @@ package com.peaksoft.gadgetaruimm6.service.impl;
 import com.peaksoft.gadgetaruimm6.exception.NotFoundException;
 import com.peaksoft.gadgetaruimm6.model.dto.BrandRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.BrandResponse;
+import com.peaksoft.gadgetaruimm6.model.dto.ProductRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.BrandMapper;
 import com.peaksoft.gadgetaruimm6.model.entity.Brand;
 import com.peaksoft.gadgetaruimm6.repository.BrandRepository;
@@ -55,16 +56,6 @@ public class BrandService implements ServiceLayer<BrandRequest, BrandResponse> {
         Brand brand = byId(id);
         brandRepository.deleteById(id);
         return brandMapper.mapToResponse(brand);
-    }
-
-    @Override
-    public BrandResponse setDescription(Long id, BrandRequest brandRequest) {
-        return null;
-    }
-
-    @Override
-    public BrandResponse setPricesAndQuantities(Long id, BrandRequest brandRequest) {
-        return null;
     }
 
     Brand byId(Long id) {

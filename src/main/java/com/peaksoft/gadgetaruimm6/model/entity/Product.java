@@ -1,7 +1,6 @@
 package com.peaksoft.gadgetaruimm6.model.entity;
 
 import com.peaksoft.gadgetaruimm6.model.enums.*;
-import com.peaksoft.gadgetaruimm6.model.enums.BrandType;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -47,8 +46,6 @@ public class Product {
     @Enumerated(EnumType.STRING)
     Color color;
     @Enumerated(EnumType.STRING)
-    BrandType brand;
-    @Enumerated(EnumType.STRING)
     OS os;
     @Enumerated(EnumType.STRING)
     Memory memory;
@@ -87,11 +84,8 @@ public class Product {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     List<Feedback> feedbacks;
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "products")
-    List<Brand>brands;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    Brand rands;
 
-    @ManyToOne
-    @JoinColumn(name = "news_id")
-    News news;
 
 }

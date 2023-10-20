@@ -1,9 +1,11 @@
 package com.peaksoft.gadgetaruimm6.service.impl;
 
 import com.peaksoft.gadgetaruimm6.exception.NotFoundException;
+import com.peaksoft.gadgetaruimm6.model.dto.BrandResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.ProductRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.ProductResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.ProductMapper;
+import com.peaksoft.gadgetaruimm6.model.entity.Brand;
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
 import com.peaksoft.gadgetaruimm6.model.enums.SortBy;
 import com.peaksoft.gadgetaruimm6.repository.ProductRepository;
@@ -30,9 +32,13 @@ public class ProductService implements ServiceLayer<ProductRequest, ProductRespo
 
     @Override
     public ProductResponse save(ProductRequest productRequest) {
-        return productMapper.mapToResponse(productRepository.save(productMapper.mapToEntity(productRequest)));
+        return null;
     }
-
+    public ProductResponse saveProduct(Long brandId,ProductRequest productRequest) {
+        Product product= productRepository.findById(brandId).get();
+        product.setId(productRequest.getBrandId());
+        return productMapper.mapToResponse(productRepository.save(product));
+    }
     @Override
     public ProductResponse findById(Long id) {
         return productMapper.mapToResponse(byId(id));
@@ -61,39 +67,25 @@ public class ProductService implements ServiceLayer<ProductRequest, ProductRespo
                 .collect(Collectors.toList());
     }
 
-
     @Override
     public ProductResponse update(Long id, ProductRequest productRequest) {
         Product oldProduct = byId(id);
         oldProduct.setWeight(productRequest.getWeight());
         oldProduct.setName(productRequest.getName());
         oldProduct.setImage(productRequest.getImage());
-        oldProduct.setPrice(Integer.parseInt(productRequest.getPrice()));
         oldProduct.setScreen(productRequest.getScreen());
         oldProduct.setGuarantee(productRequest.getGuarantee());
         oldProduct.setProcessor(productRequest.getProcessor());
         oldProduct.setDescription(productRequest.getDescription());
-        oldProduct.setFileVideo(productRequest.getFileVideo());
-        oldProduct.setFilePDF(productRequest.getFilePDF());
-        oldProduct.setGender(productRequest.getGender());
         oldProduct.setForm(productRequest.getForm());
-        oldProduct.setWaterproof(productRequest.getWaterproof());
-        oldProduct.setWireless(productRequest.getWireless());
         oldProduct.setCategoryType(productRequest.getCategoryType());
         oldProduct.setColor(productRequest.getColor());
         oldProduct.setOs(productRequest.getOs());
-        oldProduct.setMemory(productRequest.getMemory().get(id.intValue()));
+        oldProduct.setPrice(productRequest.getPrice());
+        oldProduct.setMemory(productRequest.getMemory());
         oldProduct.setReleaseDate(LocalDate.from(LocalDate.now()));
         oldProduct.setQuantitySimCards(productRequest.getQuantitySimCards());
-        oldProduct.setArticleNumber(productRequest.getArticleNumber());
-        oldProduct.setTrackType(productRequest.getTrackType());
         oldProduct.setEnginePower(productRequest.getEnginePower());
-        oldProduct.setEngineType(productRequest.getEngineType());
-        oldProduct.setSpeedAdjustment(productRequest.getSpeedAdjustment());
-        oldProduct.setPunningTrack(productRequest.getPunningTrack());
-        oldProduct.setSlopeOfTheTreadmill(productRequest.getSlopeOfTheTreadmill());
-        oldProduct.setDiameterOfTheRear(productRequest.getDiameterOfTheRear());
-        oldProduct.setProgramTraining(productRequest.getProgramTraining());
         return productMapper.mapToResponse(productRepository.save(oldProduct));
     }
 
@@ -105,23 +97,21 @@ public class ProductService implements ServiceLayer<ProductRequest, ProductRespo
         return productMapper.mapToResponse(product);
     }
 
-    @Override
     public ProductResponse setDescription(Long id, ProductRequest productRequest) {
-        Product product = byId(id);
-        product.setFileVideo(productRequest.getFileVideo());
+        Product product = productRepository.findById(id).get();
         product.setFilePDF(productRequest.getFilePDF());
+        product.setFileVideo(product.getFileVideo());
+        product.setImage(productRequest.getImage());
         product.setDescription(productRequest.getDescription());
         productRepository.save(product);
         return productMapper.mapToResponse(product);
     }
 
-    @Override
     public ProductResponse setPricesAndQuantities(Long id, ProductRequest productRequest) {
         Product product = byId(id);
-        product.setPrice(Integer.parseInt(productRequest.getPrice()));
-        product.setQuantityOfProducts(product.getQuantityOfProducts());
-        productRepository.save(product);
-        return productMapper.mapToResponse(product);
+        product.setPrice(productRequest.getPrice());
+        product.setQuantityOfProducts(productRequest.getQuantityOfProducts());
+        return productMapper.mapToResponse(productRepository.save(productMapper.mapToEntity(productRequest)));
     }
 
     Product byId(Long id) {

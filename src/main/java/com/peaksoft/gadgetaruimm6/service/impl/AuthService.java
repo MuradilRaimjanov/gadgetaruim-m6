@@ -38,7 +38,7 @@ public class AuthService {
 
     public RegisterResponse register(RegisterRequest registerRequest) {
         User user = userMapper.mapToEntity(registerRequest);
-        user.setPassword(user.getPassword());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.ROLE_USER);
         userRepository.save(user);
         return userMapper.mapToResponse(user);

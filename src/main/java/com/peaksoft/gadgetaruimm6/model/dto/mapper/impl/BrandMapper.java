@@ -7,7 +7,6 @@ import com.peaksoft.gadgetaruimm6.model.entity.Brand;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -16,9 +15,6 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class BrandMapper implements Mapper<BrandRequest, Brand, BrandResponse> {
-
-
-
     @Override
     public Brand mapToEntity(BrandRequest brandRequest) {
         return Brand.builder()

@@ -23,7 +23,7 @@ public class Brand {
 
     String image;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "brands_products",
             inverseJoinColumns = @JoinColumn(name = "product_id"),
             joinColumns = @JoinColumn(name = "brand_id"))

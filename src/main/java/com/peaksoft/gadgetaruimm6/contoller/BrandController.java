@@ -12,13 +12,13 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/brands")
+@RequestMapping("/api/brands")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class BrandController {
 
     BrandService brandService;
 
-    @PostMapping()
+    @PostMapping("/save")
     public BrandResponse save(@RequestBody BrandRequest brandRequest) {
         return brandService.save(brandRequest);
     }
