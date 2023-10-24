@@ -4,41 +4,41 @@ import com.peaksoft.gadgetaruimm6.model.dto.ProductRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.ProductResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.Mapper;
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
-import com.peaksoft.gadgetaruimm6.repository.ProductRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ProductMapper implements Mapper<ProductRequest, Product, ProductResponse> {
-
-    BrandMapper brandMapper;
     @Override
     public Product mapToEntity(ProductRequest productRequest) {
         return Product.builder()
-                .name(productRequest.getName())
                 .weight(productRequest.getWeight())
+                .name(productRequest.getName())
                 .image(productRequest.getImage())
                 .screen(productRequest.getScreen())
                 .guarantee(productRequest.getGuarantee())
-                .description(productRequest.getDescription())
                 .processor(productRequest.getProcessor())
-                .memory(productRequest.getMemory())
-                .memoryRam(productRequest.getMemoryRam())
-                .form(productRequest.getForm())
+                .description(productRequest.getDescription())
                 .categoryType(productRequest.getCategoryType())
+                .form(productRequest.getForm())
                 .color(productRequest.getColor())
                 .os(productRequest.getOs())
-                .releaseDate(LocalDate.from(LocalDate.now()))
-                .quantitySimCards(productRequest.getQuantitySimCards())
+                .memoryRam(productRequest.getMemoryRam())
+                .memory(productRequest.getMemory())
+                .releaseDate(LocalDate.now())
                 .enginePower(productRequest.getEnginePower())
                 .diameterOfTheRear(productRequest.getDiameterOfTheRear())
+                .filePDF(productRequest.getFilePDF())
+                .fileVideo(productRequest.getFileVideo())
+                .price(productRequest.getPrice())
+                .quantityOfProducts(productRequest.getQuantityOfProducts())
+                .sortBy(productRequest.getSortBy())
                 .build();
     }
 
@@ -67,7 +67,9 @@ public class ProductMapper implements Mapper<ProductRequest, Product, ProductRes
                 .enginePower(product.getEnginePower())
                 .categoryType(product.getCategoryType())
                 .processor(product.getProcessor())
+                .brandName(product.getBrand().getBrandName())
                 .feedbacks(product.getFeedbacks())
+                .brandName(product.getBrand().getBrandName())
                 .build();
     }
 }

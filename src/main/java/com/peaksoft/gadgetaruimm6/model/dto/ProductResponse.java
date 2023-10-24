@@ -1,8 +1,8 @@
 package com.peaksoft.gadgetaruimm6.model.dto;
 
-import com.peaksoft.gadgetaruimm6.model.entity.Brand;
 import com.peaksoft.gadgetaruimm6.model.entity.Discount;
 import com.peaksoft.gadgetaruimm6.model.entity.Feedback;
+import com.peaksoft.gadgetaruimm6.model.entity.Product;
 import com.peaksoft.gadgetaruimm6.model.enums.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -19,8 +19,8 @@ public class ProductResponse {
 
     Long id;
     String name;
-    int price;
-    int weight;
+    double price;
+    Long weight;
     Color color;
     String brandName;
     String image;
@@ -28,7 +28,7 @@ public class ProductResponse {
     OS os;
     MemoryRam memoryRam;
     Memory memory;
-    int quantitySimCards;
+    byte quantitySimCards;
     String processor;
     String guarantee;
     String screen;
@@ -36,10 +36,11 @@ public class ProductResponse {
     CategoryType categoryType;
     String fileVideo;
     String filePDF;
-    Long quantityOfProduct;
+    long quantityOfProduct;
     String enginePower;
     Discount discount;
     List<Feedback> feedbacks;
     LocalDate localDate;
     SortBy sortBy;
+    List<Product>products;
 }

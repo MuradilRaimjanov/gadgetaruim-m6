@@ -6,7 +6,6 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Getter
 @Setter
@@ -15,7 +14,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ProductRequest {
 
-    int weight;
+    Long weight;
     String name;
     String image;
     String screen;
@@ -29,14 +28,15 @@ public class ProductRequest {
     MemoryRam memoryRam;
     Memory memory;
     LocalDate releaseDate;
-    int quantitySimCards;
+    byte quantitySimCards;
     String enginePower;
     String diameterOfTheRear;
     String fileVideo;
     String filePDF;
-    int price;
-    Long brandId;
-    Long quantityOfProducts;
+    double price;
+    String brandName;
+    long quantityOfProducts;
+    SortBy sortBy;
 
 
 }

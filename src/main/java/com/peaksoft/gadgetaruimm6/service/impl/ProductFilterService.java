@@ -1,8 +1,8 @@
 package com.peaksoft.gadgetaruimm6.service.impl;
 
 import com.peaksoft.gadgetaruimm6.exception.ProductNotFoundException;
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterRequest;
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterResponse;
+import com.peaksoft.gadgetaruimm6.model.dto.FilterRequest;
+import com.peaksoft.gadgetaruimm6.model.dto.FilterResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.FilterMapper;
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
 import com.peaksoft.gadgetaruimm6.repository.ProductFilterRepository;
@@ -27,7 +27,6 @@ public class ProductFilterService {
         switch (productRequest.getSortBy()) {
             case BY_NEW -> {
                 products = productRepository.filterNew(
-                        productRequest.getBrands(),
                         productRequest.getColors(),
                         productRequest.getRams(),
                         productRequest.getRoms(),
@@ -37,7 +36,6 @@ public class ProductFilterService {
             }
             case BY_ASC -> {
                 products = productRepository.filterAsc(
-                        productRequest.getBrands(),
                         productRequest.getColors(),
                         productRequest.getRams(),
                         productRequest.getRoms(),
@@ -47,7 +45,6 @@ public class ProductFilterService {
             }
             case BY_DESC -> {
                 products = productRepository.filterDesc(
-                        productRequest.getBrands(),
                         productRequest.getColors(),
                         productRequest.getRams(),
                         productRequest.getRoms(),
@@ -57,7 +54,6 @@ public class ProductFilterService {
             }
             case BY_SALE -> {
                 products = productRepository.filterSale(
-                        productRequest.getBrands(),
                         productRequest.getColors(),
                         productRequest.getRams(),
                         productRequest.getRoms(),
@@ -67,7 +63,6 @@ public class ProductFilterService {
             }
             case BY_SALE_UP -> {
                 products = productRepository.filterSaleUp(
-                        productRequest.getBrands(),
                         productRequest.getColors(),
                         productRequest.getRams(),
                         productRequest.getRoms(),
@@ -77,7 +72,6 @@ public class ProductFilterService {
             }
             case BY_REC -> {
                 products = productRepository.filterRec(
-                        productRequest.getBrands(),
                         productRequest.getColors(),
                         productRequest.getRams(),
                         productRequest.getRoms(),
@@ -87,7 +81,6 @@ public class ProductFilterService {
             }
             default -> {
                 products = productRepository.filter(
-                        productRequest.getBrands(),
                         productRequest.getColors(),
                         productRequest.getRams(),
                         productRequest.getRoms(),

@@ -1,5 +1,6 @@
 package com.peaksoft.gadgetaruimm6.model.dto;
 
+import com.peaksoft.gadgetaruimm6.model.entity.Brand;
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -16,6 +17,5 @@ public class BrandResponse {
     Long id;
     String brandName;
     String image;
-    List<Product> products;
     LocalDate localDate;
 }

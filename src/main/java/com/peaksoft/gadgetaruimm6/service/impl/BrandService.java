@@ -47,7 +47,6 @@ public class BrandService implements ServiceLayer<BrandRequest, BrandResponse> {
         Brand brands = byId(id);
         brands.setBrandName(brandRequest.getBrandName());
         brands.setImage(brandRequest.getImage());
-        brands.setProducts(brandRequest.getProducts());
         return brandMapper.mapToResponse(brandRepository.save(brands));
     }
 

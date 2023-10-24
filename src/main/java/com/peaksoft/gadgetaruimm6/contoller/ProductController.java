@@ -7,7 +7,6 @@ import com.peaksoft.gadgetaruimm6.service.impl.ProductService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,23 +14,21 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/products")
-@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ProductController {
 
     ProductService productService;
 
-    @PostMapping("/{brandId}")
-    public ProductResponse saveProduct(@PathVariable Long brandId,@RequestBody ProductRequest productRequest) {
-
-        return productService.saveProduct(brandId,productRequest);
+    @PostMapping("/save/{brandId}")
+    public ProductResponse saveProduct(@PathVariable Long brandId, @RequestBody ProductRequest productRequest) {
+        return productService.saveProduct(brandId, productRequest);
     }
 
     @PostMapping("/{id}")
     public ProductResponse savePrice(@PathVariable Long id, @RequestBody ProductRequest productRequest) {
         return productService.setPricesAndQuantities(id, productRequest);
     }
-    @PostMapping("/{id}")
+    @PostMapping("/description/{id}")
     public ProductResponse saveDescription(@PathVariable Long id, @RequestBody ProductRequest productRequest) {
         return productService.setDescription(id, productRequest);
     }
@@ -41,8 +38,8 @@ public class ProductController {
         return productService.findById(id);
     }
 
-    @GetMapping
-    public List<ProductResponse> findAllProduct(@RequestParam("sort") SortBy sortBy) {
+    @GetMapping("/all")
+    public List<ProductResponse> findAllProduct(@RequestParam(value = "sort") SortBy sortBy) {
         return productService.findAllProducts(sortBy);
     }
 

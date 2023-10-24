@@ -29,7 +29,7 @@ public class BrandMapper implements Mapper<BrandRequest, Brand, BrandResponse> {
                 .id(brand.getId())
                 .brandName(brand.getBrandName())
                 .image(brand.getImage())
-                .products(brand.getProducts())
+                .brandName(brand.getBrandName())
                 .localDate(LocalDate.from(LocalDate.now().atStartOfDay()))
                 .build();
     }

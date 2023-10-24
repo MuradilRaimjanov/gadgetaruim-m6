@@ -12,5 +12,5 @@ import java.util.List;
 public class BrandRequest {
     String brandName;
     String image;
-    List<Product> products;
+
 }

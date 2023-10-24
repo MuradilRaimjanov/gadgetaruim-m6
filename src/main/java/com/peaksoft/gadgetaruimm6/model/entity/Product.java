@@ -1,5 +1,6 @@
 package com.peaksoft.gadgetaruimm6.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.peaksoft.gadgetaruimm6.model.enums.*;
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,20 +22,22 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    int weight;
+    Long weight;
     String name;
     String image;
-    int price;
+    double price;
     String screen;
     String guarantee;
     String processor;
     String description;
     String fileVideo;
     String filePDF;
-    Long quantityOfProducts;
+    long quantityOfProducts;
 
     @Enumerated(EnumType.STRING)
     Gender gender;
+    @Enumerated(EnumType.STRING)
+    SortBy sortBy;
     @Enumerated(EnumType.STRING)
     Wireless wireless;
     @Enumerated(EnumType.STRING)
@@ -54,9 +57,9 @@ public class Product {
     @Column(name = "release_date")
     LocalDate releaseDate;
     @Column(name = "quantity_sim_cards")
-    int quantitySimCards;
+    byte quantitySimCards;
     @Column(name = "article_number")
-    int articleNumber;
+    Long articleNumber;
     @Column(name = "track_type")
     String trackType;
     @Column(name = "engine_power")
@@ -74,18 +77,21 @@ public class Product {
     @Column(name = "program_training")
     String programTraining;
 
+    @JsonIgnore
     @ManyToOne
     Basket basket;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "discount_id")
     Discount discount;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     List<Feedback> feedbacks;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    Brand rands;
-
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
+    Brand brand;
 
 }

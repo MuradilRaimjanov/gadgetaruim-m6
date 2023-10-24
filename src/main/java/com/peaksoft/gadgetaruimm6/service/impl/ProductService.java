@@ -1,13 +1,13 @@
 package com.peaksoft.gadgetaruimm6.service.impl;
 
 import com.peaksoft.gadgetaruimm6.exception.NotFoundException;
-import com.peaksoft.gadgetaruimm6.model.dto.BrandResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.ProductRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.ProductResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.ProductMapper;
 import com.peaksoft.gadgetaruimm6.model.entity.Brand;
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
 import com.peaksoft.gadgetaruimm6.model.enums.SortBy;
+import com.peaksoft.gadgetaruimm6.repository.BrandRepository;
 import com.peaksoft.gadgetaruimm6.repository.ProductRepository;
 import com.peaksoft.gadgetaruimm6.service.ServiceLayer;
 import lombok.AccessLevel;
@@ -29,16 +29,20 @@ public class ProductService implements ServiceLayer<ProductRequest, ProductRespo
 
     ProductRepository productRepository;
     ProductMapper productMapper;
+    BrandRepository brandRepository;
 
     @Override
     public ProductResponse save(ProductRequest productRequest) {
         return null;
     }
-    public ProductResponse saveProduct(Long brandId,ProductRequest productRequest) {
-        Product product= productRepository.findById(brandId).get();
-        product.setId(productRequest.getBrandId());
+
+    public ProductResponse saveProduct(Long brandId, ProductRequest productRequest) {
+        Brand brand = brandRepository.findById(brandId).get();
+        Product product = productMapper.mapToEntity(productRequest);
+        product.setBrand(brand);
         return productMapper.mapToResponse(productRepository.save(product));
     }
+
     @Override
     public ProductResponse findById(Long id) {
         return productMapper.mapToResponse(byId(id));
@@ -99,19 +103,20 @@ public class ProductService implements ServiceLayer<ProductRequest, ProductRespo
 
     public ProductResponse setDescription(Long id, ProductRequest productRequest) {
         Product product = productRepository.findById(id).get();
+        productMapper.mapToEntity(productRequest);
         product.setFilePDF(productRequest.getFilePDF());
         product.setFileVideo(product.getFileVideo());
         product.setImage(productRequest.getImage());
         product.setDescription(productRequest.getDescription());
-        productRepository.save(product);
-        return productMapper.mapToResponse(product);
+        return productMapper.mapToResponse(productRepository.save(product));
     }
 
     public ProductResponse setPricesAndQuantities(Long id, ProductRequest productRequest) {
-        Product product = byId(id);
+        Product product = productRepository.findById(id).get();
+        productMapper.mapToEntity(productRequest);
         product.setPrice(productRequest.getPrice());
         product.setQuantityOfProducts(productRequest.getQuantityOfProducts());
-        return productMapper.mapToResponse(productRepository.save(productMapper.mapToEntity(productRequest)));
+        return productMapper.mapToResponse(productRepository.save(product));
     }
 
     Product byId(Long id) {

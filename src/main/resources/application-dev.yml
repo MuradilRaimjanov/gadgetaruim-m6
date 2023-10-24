@@ -2,7 +2,7 @@ spring:
   spring:
     sql:
       init:
-        mode: always
+        mode: never
       data-locations: classpath:db/migration.sql
     jpa:
       defer-datasource-initialization: true
