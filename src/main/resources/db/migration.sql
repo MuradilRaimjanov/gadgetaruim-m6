@@ -14,6 +14,9 @@ VALUES (15, 1000);
 INSERT INTO brands (brand_name, image)
 VALUES ('APPLE', NULL),
        ('SAMSUNG', NULL),
+       ('POCO',NULL),
+       ('PHP',NULL),
+       ('HONOR',NULL)
        ('HUAWEI', NULL);
 
 

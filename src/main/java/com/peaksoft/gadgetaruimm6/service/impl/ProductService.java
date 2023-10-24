@@ -53,23 +53,34 @@ public class ProductService implements ServiceLayer<ProductRequest, ProductRespo
         return null;
     }
 
+
     public List<ProductResponse> findAllProducts(SortBy sortBy) {
 
         List<Product> products = new ArrayList<>();
-        if (sortBy.equals(SortBy.BY_NEW)) {
-            products = productRepository.filterNew();
-        } else if (sortBy.equals(SortBy.BY_ASC)) {
-            products = productRepository.filterAsc();
-        } else if (sortBy.equals(SortBy.BY_DESC)) {
-            products = productRepository.filterDesc();
-        } else {
-            productRepository.filterRec();
+        try {
+            for (Product product : productRepository.findAll()) {
+                if (product.getSortBy().equals(sortBy)) {
+                    products.add(product);
+                }
+            }
+        } catch (NotFoundException e) {
+            System.out.println(e.getMessage());
         }
         return products
                 .stream()
                 .map(productMapper::mapToResponse)
                 .collect(Collectors.toList());
+//        if (sortBy.equals(SortBy.BY_NEW)) {
+//            products = productRepository.filterNew();
+//        } else if (sortBy.equals(SortBy.BY_ASC)) {
+//            products = productRepository.filterAsc();
+//        } else if (sortBy.equals(SortBy.BY_DESC)) {
+//            products = productRepository.filterDesc();
+//        } else {
+//            productRepository.filterRec();
+//        }
     }
+
 
     @Override
     public ProductResponse update(Long id, ProductRequest productRequest) {
