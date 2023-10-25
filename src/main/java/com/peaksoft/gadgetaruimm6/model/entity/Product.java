@@ -74,4 +74,8 @@ public class Product {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     List<Feedback> feedbacks;
+
+    @ManyToOne
+    @JoinColumn(name = "wishlist_id")
+    Wishlist wishlist;
 }
