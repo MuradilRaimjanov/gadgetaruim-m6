@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -60,10 +59,7 @@ public class SpringSecurity {
                                 "/swagger-ui/**",
                                 "/swagger-resources/**",
                                 "/v3/api-docs/**",
-                                "/api/auth/sign-in",
-                                "/api/auth/sing-up",
-                                "/api/auth/get",
-                                "/sig-up",
+                                "/api/auth/**",
                                 "https://accounts.google.com").permitAll()
                         .anyRequest().authenticated()
                 )

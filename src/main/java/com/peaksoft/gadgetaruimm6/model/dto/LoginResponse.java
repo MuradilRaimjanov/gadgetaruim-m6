@@ -10,4 +10,11 @@ public class LoginResponse {
     String token;
     Role role;
     String email;
+
+    public LoginResponse(String token, Role role, String email) {
+        this.token = token;
+        this.role = role;
+        this.email = email;
+    }
+
 }
