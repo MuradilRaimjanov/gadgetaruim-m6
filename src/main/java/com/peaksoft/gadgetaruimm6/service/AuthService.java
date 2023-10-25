@@ -37,7 +37,6 @@ public class AuthService {
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
         basket.setUser(user);
         user.setBasket(basket);
-        user.setBasketId(basket.getId());
         userRepository.save(user);
         return userMapper.mapToResponse(user);
     }
