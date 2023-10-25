@@ -19,8 +19,8 @@ public class Basket {
     Long id;
 
     int sum;
-    @Column(name = "discount_percent_sum")
 
+    @Column(name = "discount_percent_sum")
     int discountPercentSum;
 
     @Column(name = "quantity_of_products")
@@ -29,12 +29,14 @@ public class Basket {
     @Column(name = "end_sum")
     int endSum;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     User user;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "basket")
     List<Product>products;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "basket")
+    @OneToOne(cascade = CascadeType.ALL)
     Order order;
+
 }

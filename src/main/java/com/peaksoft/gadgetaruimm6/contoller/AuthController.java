@@ -22,6 +22,7 @@ public class AuthController {
 
     private final AuthService authService;
 
+
     @PostMapping("/sing-up")
     public ResponseEntity<RegisterResponse> register(@RequestBody @Valid RegisterRequest request) {
         return new ResponseEntity<>(authService.register(request), HttpStatus.OK);
@@ -32,6 +33,8 @@ public class AuthController {
         if(request == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        System.out.println("Controller method");
+        System.out.println(authService.authentication(request));
         return new ResponseEntity<>(authService.authentication(request),HttpStatus.OK);
     }
 

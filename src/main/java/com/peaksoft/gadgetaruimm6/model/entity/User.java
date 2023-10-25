@@ -8,6 +8,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.nio.file.attribute.UserPrincipal;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -22,7 +24,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "users")
 @FieldDefaults( level = AccessLevel.PRIVATE)
-public class User implements UserDetails {
+public class User implements UserDetails, Principal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,12 +45,9 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     Role role;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     @JoinColumn(name = "basket_id")
     Basket basket;
-
-    @Transient
-    Long basketId;
 
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
     Feedback feedbacks;
@@ -61,7 +60,6 @@ public class User implements UserDetails {
 
     @OneToOne(mappedBy = "user")
     Address address;
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -91,5 +89,10 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public String getName() {
+        return email;
     }
 }

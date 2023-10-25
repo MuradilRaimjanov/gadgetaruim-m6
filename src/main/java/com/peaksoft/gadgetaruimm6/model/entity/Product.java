@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,7 +22,6 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    int weight;
     String name;
     String image;
     int price;
@@ -29,9 +29,11 @@ public class Product {
     String guarantee;
     String processor;
     String description;
+    String cpu;
+    String weight;
+    String appointment;
+    File pdf;
 
-    @Enumerated(EnumType.STRING)
-    CategoryType categoryType;
     @Enumerated(EnumType.STRING)
     Brand brand;
     @Enumerated(EnumType.STRING)
@@ -44,6 +46,8 @@ public class Product {
     MemoryRam memoryRam;
     @Column(name = "release_date")
     LocalDate releaseDate;
+    @Column(name = "date_of_issue")
+    String dateIssue;
     @Column(name = "quantity_sim_cards")
     int quantitySimCards;
     @Column(name = "article_number")
@@ -64,14 +68,27 @@ public class Product {
     String diameterOfTheRear;
     @Column(name = "program_training")
     String programTraining;
+    @Column(name = "display_inch")
+    String displayInch;
+    @Column(name = "capacity_battery")
+    String capacityBattery;
+    @Enumerated(EnumType.STRING)
+    CategoryType categoryType;
+    @Column(name = "count_of_product")
+    int countOfProduct;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "basket_id")
     Basket basket;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @Column(name = "in_basket")
+    Boolean inBasket;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "discount_id")
     Discount discount;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     List<Feedback> feedbacks;
+
 }

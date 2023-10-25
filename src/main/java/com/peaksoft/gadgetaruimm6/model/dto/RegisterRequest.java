@@ -33,5 +33,5 @@ public class RegisterRequest {
     @NotBlank(message = "Phone number должен быть заполнен")
     String phoneNumber;
 
-
+    Long basketId;
 }

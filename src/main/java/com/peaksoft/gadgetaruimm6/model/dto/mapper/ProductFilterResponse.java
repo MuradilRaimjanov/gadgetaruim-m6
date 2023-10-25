@@ -4,31 +4,32 @@ import com.peaksoft.gadgetaruimm6.model.enums.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
+import java.io.File;
+
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class FilterResponse {
+public class ProductFilterResponse {
 
     Long id;
-    int weight;
     String name;
-    String image;
     int price;
+    String image;
+    String description;
+    String dateIssue;
     String screen;
     String guarantee;
     String processor;
-    String description;
-    CategoryType categoryType;
+    String weight;
     Brand brand;
     Color color;
     OS os;
-    Memory memory;
+    File pdf;
+    Memory memoryRom;
     MemoryRam memoryRam;
-    LocalDate releaseDate;
     int quantitySimCards;
     int articleNumber;
     String trackType;
@@ -39,5 +40,5 @@ public class FilterResponse {
     String slopeOfTheTreadmill;
     String diameterOfTheRear;
     String programTraining;
-
+    Boolean inBasket;
 }

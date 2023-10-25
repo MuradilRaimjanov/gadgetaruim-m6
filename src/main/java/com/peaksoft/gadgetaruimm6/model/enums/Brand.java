@@ -12,7 +12,7 @@ public enum Brand {
     APPLE,
     NOKIA,
     IPAD,
-    REALMI ,
-    VIVO ,
+    REALME,
+    VIVO,
     OPPO
 }

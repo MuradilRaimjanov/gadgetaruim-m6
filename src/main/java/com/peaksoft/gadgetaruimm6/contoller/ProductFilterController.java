@@ -1,7 +1,7 @@
 package com.peaksoft.gadgetaruimm6.contoller;
 
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterRequest;
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterResponse;
+import com.peaksoft.gadgetaruimm6.model.dto.mapper.ProductFilterResponse;
 import com.peaksoft.gadgetaruimm6.service.impl.ProductFilterService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ public class ProductFilterController {
     ProductFilterService productService;
 
     @GetMapping("/filter")
-    public List<FilterResponse> filterCatalog(@RequestBody FilterRequest productRequest) {
+    public List<ProductFilterResponse> filterCatalog(@RequestBody FilterRequest productRequest) {
         return productService.filterCatalog(productRequest);
     }
 
