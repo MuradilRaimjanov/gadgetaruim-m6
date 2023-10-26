@@ -55,6 +55,10 @@ public class User implements UserDetails {
     @OneToOne(mappedBy = "user")
     Address address;
 
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "wishlist_id")
+    Wishlist wishlist;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -85,4 +89,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

@@ -22,6 +22,9 @@ public class Wishlist {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "wishlist")
     List<Product> products;
 
+    @Column(name = "count_of_product")
+    int countOfProduct;
+
     @OneToOne(cascade = CascadeType.ALL)
     User user;
 }
