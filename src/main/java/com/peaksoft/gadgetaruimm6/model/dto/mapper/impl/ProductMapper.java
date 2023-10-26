@@ -48,7 +48,6 @@ public class ProductMapper implements Mapper<ProductRequest, Product, ProductRes
                 .id(product.getId())
                 .name(product.getName())
                 .price(product.getPrice())
-                .brandName(product.getName())
                 .color(product.getColor())
                 .releaseDate(LocalDate.now())
                 .os(product.getOs())
@@ -63,13 +62,9 @@ public class ProductMapper implements Mapper<ProductRequest, Product, ProductRes
                 .filePDF(product.getFilePDF())
                 .fileVideo(product.getFileVideo())
                 .quantityOfProduct(product.getQuantityOfProducts())
-                .discount(product.getDiscount())
                 .enginePower(product.getEnginePower())
                 .categoryType(product.getCategoryType())
                 .processor(product.getProcessor())
-                .brandName(product.getBrand().getBrandName())
-                .feedbacks(product.getFeedbacks())
-                .brandName(product.getBrand().getBrandName())
                 .build();
     }
 }

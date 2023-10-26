@@ -22,7 +22,6 @@ public class ProductResponse {
     double price;
     Long weight;
     Color color;
-    String brandName;
     String image;
     LocalDate releaseDate;
     OS os;
@@ -39,7 +38,6 @@ public class ProductResponse {
     long quantityOfProduct;
     String enginePower;
     Discount discount;
-    List<Feedback> feedbacks;
     LocalDate localDate;
     SortBy sortBy;
     List<Product>products;

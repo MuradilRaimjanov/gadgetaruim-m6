@@ -57,28 +57,28 @@ public class ProductService implements ServiceLayer<ProductRequest, ProductRespo
     public List<ProductResponse> findAllProducts(SortBy sortBy) {
 
         List<Product> products = new ArrayList<>();
-        try {
-            for (Product product : productRepository.findAll()) {
-                if (product.getSortBy().equals(sortBy)) {
-                    products.add(product);
-                }
-            }
-        } catch (NotFoundException e) {
-            System.out.println(e.getMessage());
+//        try {
+//            for (Product product : productRepository.findAll()) {
+//                if (product.getSortBy().equals(sortBy)) {
+//                    products.add(product);
+//                }
+//            }
+//        } catch (NotFoundException e) {
+//            System.out.println("метод не работает");
+//        }
+        if (sortBy.equals(SortBy.BY_NEW)) {
+            products = productRepository.filterNew();
+        } else if (sortBy.equals(SortBy.BY_ASC)) {
+            products = productRepository.filterAsc();
+        } else if (sortBy.equals(SortBy.BY_DESC)) {
+            products = productRepository.filterDesc();
+        } else {
+            productRepository.filterRec();
         }
         return products
                 .stream()
                 .map(productMapper::mapToResponse)
                 .collect(Collectors.toList());
-//        if (sortBy.equals(SortBy.BY_NEW)) {
-//            products = productRepository.filterNew();
-//        } else if (sortBy.equals(SortBy.BY_ASC)) {
-//            products = productRepository.filterAsc();
-//        } else if (sortBy.equals(SortBy.BY_DESC)) {
-//            products = productRepository.filterDesc();
-//        } else {
-//            productRepository.filterRec();
-//        }
     }
 
 
@@ -113,8 +113,9 @@ public class ProductService implements ServiceLayer<ProductRequest, ProductRespo
     }
 
     public ProductResponse setDescription(Long id, ProductRequest productRequest) {
-        Product product = productRepository.findById(id).get();
-        productMapper.mapToEntity(productRequest);
+//        Product product = productRepository.findById(id).get();
+//        productMapper.mapToEntity(productRequest);
+        Product product=byId(id);
         product.setFilePDF(productRequest.getFilePDF());
         product.setFileVideo(product.getFileVideo());
         product.setImage(productRequest.getImage());
