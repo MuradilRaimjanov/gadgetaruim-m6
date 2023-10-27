@@ -31,7 +31,7 @@ INSERT INTO products(article_number, quantity_sim_cards, release_date, weight,
                      engine_power, engine_type, guarantee, image, memory, memory_ram, name, os, price, processor,
                      program_training,
                      punning_track, screen, slope_of_the_treadmill, speed_adjustment, track_type,quantity_of_products)
-VALUES (1235, 2, CAST('2022-02-23' AS DATE), 187, 1, 1, 'SMARTPHONES', 'WHITE',
+VALUES (1235, 2, CAST('2022-02-23' AS DATE), 186, 1, 1, 'SMARTPHONES', 'WHITE',
         'The Apple iPhone 15 Blue smartphone received a 6.1-inch diagonal display made using Super Retina XBM technology',
         NULL,
         NULL, NULL, NULL, NULL, 'TWO_HUNDRED_FIFTY_SIX_GB', 'EIGHT_GB', 'IPhone 15 pro', 'IOS', 169.999,

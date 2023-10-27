@@ -12,15 +12,13 @@ import java.util.List;
 @Transactional
 public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("""
-            SELECT p FROM Product p WHERE 
-             p.price BETWEEN :priceFrom AND :priceTo ORDER BY p.price ASC
+            SELECT p FROM Product p ORDER BY p.price ASC
             """)
     List<Product> filterAsc();
 
 
     @Query("""
-            SELECT p FROM Product p WHERE 
-            p.price BETWEEN :priceFrom AND :priceTo ORDER BY p.price DESC
+            SELECT p FROM Product p ORDER BY p.price DESC
             """)
     List<Product> filterDesc();
 

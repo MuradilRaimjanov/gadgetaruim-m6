@@ -61,7 +61,7 @@ public class ProductMapper implements Mapper<ProductRequest, Product, ProductRes
                 .description(product.getDescription())
                 .filePDF(product.getFilePDF())
                 .fileVideo(product.getFileVideo())
-                .quantityOfProduct(product.getQuantityOfProducts())
+                .quantityOfProducts(product.getQuantityOfProducts())
                 .enginePower(product.getEnginePower())
                 .categoryType(product.getCategoryType())
                 .processor(product.getProcessor())

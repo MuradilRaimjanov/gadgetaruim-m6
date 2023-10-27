@@ -1,5 +1,7 @@
 package com.peaksoft.gadgetaruimm6.contoller;
 
+import com.peaksoft.gadgetaruimm6.model.dto.ProductDescriptionRequest;
+import com.peaksoft.gadgetaruimm6.model.dto.ProductPriceRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.ProductRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.ProductResponse;
 import com.peaksoft.gadgetaruimm6.model.enums.SortBy;
@@ -25,12 +27,12 @@ public class ProductController {
     }
 
     @PostMapping("/{id}")
-    public ProductResponse savePrice(@PathVariable Long id, @RequestBody ProductRequest productRequest) {
-        return productService.setPricesAndQuantities(id, productRequest);
+    public ProductResponse savePrice(@PathVariable Long id, @RequestBody ProductPriceRequest productPriceRequest) {
+        return productService.setPricesAndQuantities(id,productPriceRequest);
     }
     @PostMapping("/description/{id}")
-    public ProductResponse saveDescription(@PathVariable Long id, @RequestBody ProductRequest productRequest) {
-        return productService.setDescription(id, productRequest);
+    public ProductResponse saveDescription(@PathVariable Long id, @RequestBody ProductDescriptionRequest descriptionRequest) {
+        return productService.setDescription(id,descriptionRequest );
     }
 
     @GetMapping("{id}")

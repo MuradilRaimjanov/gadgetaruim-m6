@@ -1,6 +1,8 @@
 package com.peaksoft.gadgetaruimm6.service.impl;
 
 import com.peaksoft.gadgetaruimm6.exception.NotFoundException;
+import com.peaksoft.gadgetaruimm6.model.dto.ProductDescriptionRequest;
+import com.peaksoft.gadgetaruimm6.model.dto.ProductPriceRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.ProductRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.ProductResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.ProductMapper;
@@ -57,15 +59,6 @@ public class ProductService implements ServiceLayer<ProductRequest, ProductRespo
     public List<ProductResponse> findAllProducts(SortBy sortBy) {
 
         List<Product> products = new ArrayList<>();
-//        try {
-//            for (Product product : productRepository.findAll()) {
-//                if (product.getSortBy().equals(sortBy)) {
-//                    products.add(product);
-//                }
-//            }
-//        } catch (NotFoundException e) {
-//            System.out.println("метод не работает");
-//        }
         if (sortBy.equals(SortBy.BY_NEW)) {
             products = productRepository.filterNew();
         } else if (sortBy.equals(SortBy.BY_ASC)) {
@@ -92,15 +85,31 @@ public class ProductService implements ServiceLayer<ProductRequest, ProductRespo
         oldProduct.setGuarantee(productRequest.getGuarantee());
         oldProduct.setProcessor(productRequest.getProcessor());
         oldProduct.setDescription(productRequest.getDescription());
+        oldProduct.setFileVideo(productRequest.getFileVideo());
+        oldProduct.setFilePDF(productRequest.getFilePDF());
+        oldProduct.setQuantityOfProducts(productRequest.getQuantityOfProducts());
+        oldProduct.setGender(productRequest.getGender());
+        oldProduct.setWireless(productRequest.getWireless());
+        oldProduct.setWaterproof(productRequest.getWaterproof());
         oldProduct.setForm(productRequest.getForm());
         oldProduct.setCategoryType(productRequest.getCategoryType());
         oldProduct.setColor(productRequest.getColor());
         oldProduct.setOs(productRequest.getOs());
-        oldProduct.setPrice(productRequest.getPrice());
         oldProduct.setMemory(productRequest.getMemory());
+        oldProduct.setMemoryRam(productRequest.getMemoryRam());
         oldProduct.setReleaseDate(LocalDate.from(LocalDate.now()));
         oldProduct.setQuantitySimCards(productRequest.getQuantitySimCards());
+        oldProduct.setArticleNumber(productRequest.getArticleNumber());
+        oldProduct.setTrackType(productRequest.getTrackType());
         oldProduct.setEnginePower(productRequest.getEnginePower());
+        oldProduct.setEngineType(productRequest.getEngineType());
+        oldProduct.setSpeedAdjustment(productRequest.getSpeedAdjustment());
+        oldProduct.setPunningTrack(productRequest.getPunningTrack());
+        oldProduct.setSlopeOfTheTreadmill(productRequest.getSlopeOfTheTreadmill());
+        oldProduct.setDiameterOfTheRear(productRequest.getDiameterOfTheRear());
+        oldProduct.setProgramTraining(productRequest.getProgramTraining());
+        oldProduct.setSortBy(productRequest.getSortBy());
+        oldProduct.setPrice(productRequest.getPrice());
         return productMapper.mapToResponse(productRepository.save(oldProduct));
     }
 
@@ -112,22 +121,18 @@ public class ProductService implements ServiceLayer<ProductRequest, ProductRespo
         return productMapper.mapToResponse(product);
     }
 
-    public ProductResponse setDescription(Long id, ProductRequest productRequest) {
-//        Product product = productRepository.findById(id).get();
-//        productMapper.mapToEntity(productRequest);
-        Product product=byId(id);
-        product.setFilePDF(productRequest.getFilePDF());
-        product.setFileVideo(product.getFileVideo());
-        product.setImage(productRequest.getImage());
-        product.setDescription(productRequest.getDescription());
+    public ProductResponse setDescription(Long id, ProductDescriptionRequest descriptionRequest) {
+        Product product = byId(id);
+        product.setFilePDF(descriptionRequest.getFilePDF());
+        product.setFileVideo(descriptionRequest.getFileVideo());
+        product.setDescription(descriptionRequest.getDescription());
         return productMapper.mapToResponse(productRepository.save(product));
     }
 
-    public ProductResponse setPricesAndQuantities(Long id, ProductRequest productRequest) {
-        Product product = productRepository.findById(id).get();
-        productMapper.mapToEntity(productRequest);
-        product.setPrice(productRequest.getPrice());
-        product.setQuantityOfProducts(productRequest.getQuantityOfProducts());
+    public ProductResponse setPricesAndQuantities(Long id, ProductPriceRequest productPriceRequest) {
+        Product product = byId(id);
+        product.setPrice(productPriceRequest.getPrice());
+        product.setQuantityOfProducts(productPriceRequest.getQuantityOfProducts());
         return productMapper.mapToResponse(productRepository.save(product));
     }
 
