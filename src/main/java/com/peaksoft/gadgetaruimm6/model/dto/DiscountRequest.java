@@ -1,0 +1,19 @@
+package com.peaksoft.gadgetaruimm6.model.dto;
+
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
+import java.time.LocalDate;
+
+@Setter
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class DiscountRequest {
+
+    LocalDate dateOfStart;
+    LocalDate dateOfEnd;
+    int percent;
+}
