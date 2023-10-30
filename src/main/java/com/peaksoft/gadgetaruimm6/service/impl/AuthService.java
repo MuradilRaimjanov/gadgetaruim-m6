@@ -1,4 +1,4 @@
-package com.peaksoft.gadgetaruimm6.service;
+package com.peaksoft.gadgetaruimm6.service.impl;
 
 import com.peaksoft.gadgetaruimm6.config.jwt.JwtUtil;
 import com.peaksoft.gadgetaruimm6.model.dto.LoginRequest;
@@ -38,7 +38,7 @@ public class AuthService {
 
     public RegisterResponse register(RegisterRequest registerRequest) {
         User user = userMapper.mapToEntity(registerRequest);
-        user.setPassword(user.getPassword());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.ROLE_USER);
         userRepository.save(user);
         return userMapper.mapToResponse(user);

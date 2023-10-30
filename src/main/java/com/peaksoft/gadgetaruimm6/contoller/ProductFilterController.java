@@ -1,7 +1,7 @@
 package com.peaksoft.gadgetaruimm6.contoller;
 
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterRequest;
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterResponse;
+import com.peaksoft.gadgetaruimm6.model.dto.FilterRequest;
+import com.peaksoft.gadgetaruimm6.model.dto.FilterResponse;
 import com.peaksoft.gadgetaruimm6.service.impl.ProductFilterService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

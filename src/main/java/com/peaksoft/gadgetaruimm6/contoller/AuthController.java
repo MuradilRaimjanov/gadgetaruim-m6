@@ -3,7 +3,7 @@ package com.peaksoft.gadgetaruimm6.contoller;
 import com.peaksoft.gadgetaruimm6.model.dto.LoginRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.RegisterRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.RegisterResponse;
-import com.peaksoft.gadgetaruimm6.service.AuthService;
+import com.peaksoft.gadgetaruimm6.service.impl.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,7 @@ public class AuthController {
 
     private final AuthService authService;
 
-    @PostMapping("/sing-up")
+    @PostMapping("/sign-up")
     public ResponseEntity<RegisterResponse> register(@RequestBody @Valid RegisterRequest request) {
         return new ResponseEntity<>(authService.register(request), HttpStatus.OK);
     }

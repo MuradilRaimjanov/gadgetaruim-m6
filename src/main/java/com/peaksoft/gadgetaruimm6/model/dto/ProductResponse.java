@@ -1,36 +1,44 @@
-package com.peaksoft.gadgetaruimm6.model.dto.mapper;
+package com.peaksoft.gadgetaruimm6.model.dto;
 
+import com.peaksoft.gadgetaruimm6.model.entity.Product;
 import com.peaksoft.gadgetaruimm6.model.enums.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
-@Getter
-@Setter
+import java.util.List;
+
+@Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class FilterResponse {
+public class ProductResponse {
 
     Long id;
-    int weight;
+    Long weight;
     String name;
     String image;
-    int price;
+    double price;
     String screen;
     String guarantee;
     String processor;
     String description;
+    String fileVideo;
+    String filePDF;
+    long quantityOfProducts;
+    Gender gender;
+    Wireless wireless;
+    Waterproof waterproof;
+    Form form;
     CategoryType categoryType;
-    Brand brand;
     Color color;
     OS os;
     Memory memory;
     MemoryRam memoryRam;
     LocalDate releaseDate;
-    int quantitySimCards;
-    int articleNumber;
+    byte quantitySimCards;
+    Long articleNumber;
     String trackType;
     String enginePower;
     String engineType;
@@ -39,5 +47,6 @@ public class FilterResponse {
     String slopeOfTheTreadmill;
     String diameterOfTheRear;
     String programTraining;
-
+    SortBy sortBy;
+    List<Product> products;
 }
