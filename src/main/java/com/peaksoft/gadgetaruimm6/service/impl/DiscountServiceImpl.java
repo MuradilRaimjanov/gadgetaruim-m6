@@ -4,7 +4,9 @@ import com.peaksoft.gadgetaruimm6.model.dto.DiscountRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.DiscountResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.DiscountMapper;
 import com.peaksoft.gadgetaruimm6.model.entity.Discount;
+import com.peaksoft.gadgetaruimm6.model.entity.Product;
 import com.peaksoft.gadgetaruimm6.repository.DiscountRepository;
+import com.peaksoft.gadgetaruimm6.repository.ProductRepository;
 import com.peaksoft.gadgetaruimm6.service.DiscountService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ public class DiscountServiceImpl implements DiscountService {
 
     DiscountMapper discountMapper;
     DiscountRepository discountRepository;
+    ProductRepository productRepository;
 
     @Override
     public DiscountResponse save(DiscountRequest discountRequest) {
@@ -42,4 +45,15 @@ public class DiscountServiceImpl implements DiscountService {
         discountRepository.delete(discount);
         return "The discount successfully deleted";
     }
+
+    @Override
+    public DiscountResponse addSaleToProduct(Long id, DiscountRequest discountRequest) {
+        Product product = productRepository.findById(id).orElseThrow(()-> new RuntimeException("The product not found"));
+        Discount discount = discountRepository.findById(discountRequest.getDiscountId()).orElseThrow(()-> new RuntimeException("The discount not found"));
+        product.setDiscount(discount);
+        productRepository.save(product);
+        return discountMapper.mapToResponse(discount);
+    }
+
+
 }

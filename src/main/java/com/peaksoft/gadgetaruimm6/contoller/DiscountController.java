@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.*;
 public class DiscountController {
 
     DiscountService discountService;
+    @PutMapping("/add-sale-to-product/{id}")
+    public DiscountResponse addToProductSale(@PathVariable("id")Long id, @RequestBody DiscountRequest discountRequest) {
+        return discountService.addSaleToProduct(id, discountRequest);
+    }
 
     @PostMapping("/save")
     public DiscountResponse save(@RequestBody DiscountRequest discountRequest) {

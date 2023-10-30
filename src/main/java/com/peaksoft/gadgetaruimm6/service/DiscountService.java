@@ -10,4 +10,6 @@ public interface DiscountService {
     DiscountResponse update(Long id, DiscountRequest discountRequest);
 
     String delete(Long id);
+
+    DiscountResponse addSaleToProduct(Long id, DiscountRequest discountRequest);
 }

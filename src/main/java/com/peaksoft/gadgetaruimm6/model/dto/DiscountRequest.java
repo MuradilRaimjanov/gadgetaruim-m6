@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DiscountRequest {
 
+    Long discountId;
     LocalDate dateOfStart;
     LocalDate dateOfEnd;
     int percent;
