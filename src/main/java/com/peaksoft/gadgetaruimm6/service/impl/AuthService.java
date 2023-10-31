@@ -40,6 +40,7 @@ public class AuthService {
     public RegisterResponse register(RegisterRequest registerRequest) {
         Basket basket = new Basket();
         User user = userMapper.mapToEntity(registerRequest);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.ROLE_USER);
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
         basket.setUser(user);

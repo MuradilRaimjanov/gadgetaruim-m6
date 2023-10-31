@@ -22,38 +22,42 @@ INSERT INTO addresses(country_name, name, street_name, user_id)
 VALUES ('Russia', 'Moscow', '5th Avenue', 1),
        ('Russia', 'Piter', '6th Avenue', 2);
 
-INSERT INTO products(article_number, quantity_sim_cards, release_date, weight, discount_id, brand, category_type, color, description, diameter_of_the_rear,
-                     engine_power, engine_type, guarantee, image, memory, memory_ram, name, os, price, processor, program_training,
-                     punning_track, screen, slope_of_the_treadmill, speed_adjustment, track_type, count_of_product)
-VALUES (1235, 2, CAST('2022-02-23' AS DATE), 187, 1, 'APPLE', 'SMARTPHONES', 'WHITE',
+INSERT INTO brands(id, brand_name, image)
+VALUES (1, 'APPLE', null),
+       (2, 'SAMSUNG', null);
+
+INSERT INTO products(article_number, quantity_sim_cards, release_date, weight, discount_id, category_type, color, description, diameter_of_the_rear,
+                     engine_power, engine_type, guarantee, image, memory_rom, memory_ram, name, os, price, processor, program_training,
+                     punning_track, screen, slope_of_the_treadmill, speed_adjustment, track_type, quantity_of_product, brand_id)
+VALUES (1235, 2, CAST('2022-02-23' AS DATE), 187, 1, 'SMARTPHONES', 'WHITE',
         'The Apple iPhone 15 Blue smartphone received a 6.1-inch diagonal display made using Super Retina XBM technology', NULL,
         NULL, NULL, NULL, NULL, 'TWO_HUNDRED_FIFTY_SIX_GB', 'EIGHT_GB', 'IPhone 15 pro', 'IOS', 1000,  'Apple A15 Bionic', NULL,
-        NULL, '6.1', NULL, NULL, NULL, 3),
+        NULL, '6.1', NULL, NULL, NULL, 3, 1),
 
-       (5432, 1, CAST('2023-07-10' AS DATE), 187, 2, 'SAMSUNG', 'SMARTPHONES', 'RED',
+       (5432, 1, CAST('2023-07-10' AS DATE), 187, 2, 'SMARTPHONES', 'RED',
         'The Samsung Galaxy Z Flip5 Lavender smartphone (SM-F731B) is a device with a folding case and two screens, which expands its capabilities', NULL,
         NULL, NULL, NULL, NULL, 'TWO_HUNDRED_FIFTY_SIX_GB', 'EIGHT_GB', 'Samsung Galaxy Z Flip5', 'ANDROID', 1000, 'Qualcomm Snapdragon 8 Gen2', NULL,
-        NULL, '6.7', NULL, NULL, NULL, 3),
+        NULL, '6.7', NULL, NULL, NULL, 3, 2),
 
-       (7868, 2, CAST('2022-05-08' AS DATE), 178, 3, 'HONOR', 'SMARTPHONES', 'RED',
+       (7868, 2, CAST('2022-05-08' AS DATE), 178, 3, 'SMARTPHONES', 'RED',
         'The Honor 70 smartphone in a Midnight Black glass case runs on the Android Magic UI 6.1 operating system', NULL,
         NULL, NULL, NULL, NULL, 'TWO_HUNDRED_FIFTY_SIX_GB', 'EIGHT_GB', 'Honor 70', 'ANDROID', 1000, 'Qualcomm Snapdragon 778G Plus', NULL,
-        NULL, '6.67', NULL, NULL, NULL, 3),
+        NULL, '6.67', NULL, NULL, NULL, 3, 1),
 
-       (5675, 1, CAST('2022-11-20' AS DATE), 466, 4, 'APPLE', 'TABLETS', 'BEIGE',
+       (5675, 1, CAST('2022-11-20' AS DATE), 466, 4, 'TABLETS', 'BEIGE',
         'The Apple iPad Pro 11 2022 tablet is a model with chopped edges and rounded corners,made in an aluminum case. The design color is black', NULL,
         NULL, NULL, NULL, NULL, 'HUNDRED_TWENTY_EIGHT_GB', 'EIGHT_GB', 'IPad Pro 11 ', 'IOS', 1000, 'Apple A12X Bionic processor with 64 bit architecture', NULL,
-        NULL, '11', NULL, NULL, NULL, 3),
+        NULL, '11', NULL, NULL, NULL, 3, 2),
 
-       (6864, 1, CAST('2023-02-15' AS DATE), 737, 5, 'SAMSUNG', 'TABLETS', 'BLACK',
+       (6864, 1, CAST('2023-02-15' AS DATE), 737, 5, 'TABLETS', 'BLACK',
         'The Samsung Galaxy Tab S9 5G Beige tablet (SM-X716B) is an 11-inch model, the screen of which is made using Dynamic AMOLED 2X technology', NULL,
         NULL, NULL, NULL, NULL, 'FIVE_HUNDRED_TWELVE_GB', 'EIGHT_GB', 'Samsung Galaxy Tab S9 Ultra', 'ANDROID', 1000, 'Qualcomm Snapdragon 8 Gen', NULL,
-        NULL, '6.1', NULL, NULL, NULL, 3),
+        NULL, '6.1', NULL, NULL, NULL, 3, 1),
 
-       (2346, 2, CAST('2022-01-12' AS DATE), 172, 6, 'APPLE', 'SMARTPHONES', 'GREY',
+       (2346, 2, CAST('2022-01-12' AS DATE), 172, 6, 'SMARTPHONES', 'GREY',
         'this product produced in 2022', NULL,
         NULL, NULL, NULL, NULL, 'HUNDRED_TWENTY_EIGHT_GB', 'EIGHT_GB', 'IPhone 14 ', 'IOS', 1000, 'Apple A15 Bionic', NULL,
-        NULL, '6.1', NULL, NULL, NULL, 3);
+        NULL, '6.1', NULL, NULL, NULL, 3, 2);
 
 INSERT INTO delivery(name, last_name, phone_number)
 VALUES ('Gigi', 'Mark', '8(926)797_79_83');

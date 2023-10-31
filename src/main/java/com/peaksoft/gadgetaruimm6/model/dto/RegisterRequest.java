@@ -1,5 +1,6 @@
 package com.peaksoft.gadgetaruimm6.model.dto;
 
+import com.peaksoft.gadgetaruimm6.model.entity.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -30,8 +31,12 @@ public class RegisterRequest {
     @Length(min = 8, max = 20, message = " пароль должен содержать не менее от 8 до 20 символов, в том числе цифры и спецсимволов")
     String password;
 
+    String repeatPassword;
+
     @NotBlank(message = "Phone number должен быть заполнен")
     String phoneNumber;
 
-    Long basketId;
+    Role role;
+
+
 }

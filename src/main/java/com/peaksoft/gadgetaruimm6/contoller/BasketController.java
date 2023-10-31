@@ -1,6 +1,6 @@
 package com.peaksoft.gadgetaruimm6.contoller;
 
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.BasketResponse;
+import com.peaksoft.gadgetaruimm6.model.dto.BasketResponse;
 import com.peaksoft.gadgetaruimm6.service.impl.BasketService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

@@ -1,8 +1,7 @@
-package com.peaksoft.gadgetaruimm6.model.dto.mapper;
+package com.peaksoft.gadgetaruimm6.model.dto;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -15,9 +14,9 @@ import java.util.List;
 public class BasketResponse {
 
     int countOfProduct;
-    int countDiscPrice;
-    int allSum;
-    int endSum;
-    List<ProductFilterResponse> products;
+    double countDiscPrice;
+    double allSum;
+    double endSum;
+    List<FilterResponse> products;
     String massage;
 }

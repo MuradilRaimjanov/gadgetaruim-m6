@@ -1,7 +1,6 @@
 package com.peaksoft.gadgetaruimm6.model.dto.mapper.impl;
 
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.BasketResponse;
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.ProductFilterResponse;
+import com.peaksoft.gadgetaruimm6.model.dto.FilterResponse;
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -13,27 +12,27 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public class BasketMapper {
-
-
-    public List<ProductFilterResponse> mapToResponse(List<Product> products) {
-        List<ProductFilterResponse> responses = new ArrayList<>();
-        products.stream().map(product -> responses.add(new ProductFilterResponse(
+    public List<FilterResponse> mapToResponse(List<Product> products) {
+        List<FilterResponse> responses = new ArrayList<>();
+        products.stream().map(product -> responses.add(new FilterResponse(
                 product.getId(),
+                product.getWeight(),
                 product.getName(),
-                product.getPrice(),
                 product.getImage(),
-                product.getDescription(),
-                product.getDateIssue(),
+                product.getPrice(),
                 product.getScreen(),
                 product.getGuarantee(),
                 product.getProcessor(),
-                product.getWeight(),
-                product.getBrand(),
+                product.getDescription(),
+                product.getFilePDF(),
+                product.getFileVideo(),
+                product.getCategoryType(),
                 product.getColor(),
                 product.getOs(),
-                product.getPdf(),
-                product.getMemory(),
+                product.getMemoryRom(),
                 product.getMemoryRam(),
+                product.getReleaseDate(),
+                product.getDateIssue(),
                 product.getQuantitySimCards(),
                 product.getArticleNumber(),
                 product.getTrackType(),
@@ -44,7 +43,9 @@ public class BasketMapper {
                 product.getSlopeOfTheTreadmill(),
                 product.getDiameterOfTheRear(),
                 product.getProgramTraining(),
-                product.getInBasket()
+                product.getDisplayInch(),
+                product.getCapacityBattery(),
+                product.getQuantityOfProducts()
         ))).collect(Collectors.toList());
         return responses;
     }

@@ -1,8 +1,9 @@
 package com.peaksoft.gadgetaruimm6.model.dto.mapper.impl;
 
+import com.peaksoft.gadgetaruimm6.model.dto.FilterRequest;
+import com.peaksoft.gadgetaruimm6.model.dto.FilterResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.Mapper;
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.FilterRequest;
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.ProductFilterResponse;
+
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
 import com.peaksoft.gadgetaruimm6.repository.ProductFilterRepository;
 import lombok.AccessLevel;
@@ -17,12 +18,13 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PACKAGE, makeFinal = true)
-public class FilterMapper implements Mapper<FilterRequest, List<Product>, List<ProductFilterResponse>> {
+public class FilterMapper implements Mapper<FilterRequest, List<Product>, List<FilterResponse>> {
     ProductFilterRepository productRepository;
 
     @Override
     public List<Product> mapToEntity(FilterRequest filterRequest) {
-        return productRepository.filter(filterRequest.getBrands(),
+        return productRepository.filter(
+                filterRequest.getBrands(),
                 filterRequest.getColors(),
                 filterRequest.getRams(),
                 filterRequest.getRoms(),
@@ -32,25 +34,27 @@ public class FilterMapper implements Mapper<FilterRequest, List<Product>, List<P
     }
 
     @Override
-    public List<ProductFilterResponse> mapToResponse(List<Product> products) {
-        List<ProductFilterResponse> responses = new ArrayList<>();
-        products.stream().map(product -> responses.add(new ProductFilterResponse(
-                product.getId(),
+    public List<FilterResponse> mapToResponse(List<Product> products) {
+        List<FilterResponse> responses = new ArrayList<>();
+        products.stream().map(product -> responses.add(new FilterResponse(
+            product.getId(),
+                product.getWeight(),
                 product.getName(),
-                product.getPrice(),
                 product.getImage(),
-                product.getDescription(),
-                product.getDateIssue(),
+                product.getPrice(),
                 product.getScreen(),
                 product.getGuarantee(),
                 product.getProcessor(),
-                product.getWeight(),
-                product.getBrand(),
+                product.getDescription(),
+                product.getFilePDF(),
+                product.getFileVideo(),
+                product.getCategoryType(),
                 product.getColor(),
                 product.getOs(),
-                product.getPdf(),
-                product.getMemory(),
+                product.getMemoryRom(),
                 product.getMemoryRam(),
+                product.getReleaseDate(),
+                product.getDateIssue(),
                 product.getQuantitySimCards(),
                 product.getArticleNumber(),
                 product.getTrackType(),
@@ -61,7 +65,9 @@ public class FilterMapper implements Mapper<FilterRequest, List<Product>, List<P
                 product.getSlopeOfTheTreadmill(),
                 product.getDiameterOfTheRear(),
                 product.getProgramTraining(),
-                product.getInBasket()
+                product.getDisplayInch(),
+                product.getCapacityBattery(),
+                product.getQuantityOfProducts()
         ))).collect(Collectors.toList());
         return responses;
     }

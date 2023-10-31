@@ -1,7 +1,7 @@
 package com.peaksoft.gadgetaruimm6.service.impl;
 
 import com.peaksoft.gadgetaruimm6.exception.ProductNotFoundException;
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.BasketResponse;
+import com.peaksoft.gadgetaruimm6.model.dto.BasketResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.BasketMapper;
 import com.peaksoft.gadgetaruimm6.model.entity.Basket;
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
@@ -37,10 +37,10 @@ public class BasketService {
         int percent = 0;
         int count = 0;
         User user = userRepository.findByEmail(principal.getName());
-        if (user.getBasket().getId() != null && product.getCountOfProduct() > 0) {
+        if (user.getBasket().getId() != null && product.getQuantityOfProducts() > 0) {
             Basket basket = basketRepository.findById(user.getBasket().getId()).orElseThrow(()-> new RuntimeException("Basket not found"));
             product.setBasket(basket);
-            product.setCountOfProduct(product.getCountOfProduct() - 1);
+            product.setQuantityOfProducts(product.getQuantityOfProducts() - 1);
             product.setInBasket(true);
             productRepository.save(product);
             products = basket.getProducts();
@@ -74,19 +74,19 @@ public class BasketService {
         Basket basket = basketRepository.findById(user.getBasket().getId()).orElseThrow(()-> new RuntimeException("Basket id not found"));
         List<Product> products = basket.getProducts();
         int size = products.size();
-        int minusSum = 0;
-        int minusEndSum = 0;
-        int discountPrice = 0;
+        double minusSum = 0;
+        double minusEndSum = 0;
+        double discountPrice = 0;
         int x = 0;
         for(int i = 0; i < products.size(); i++) {
             if (size > 1) {
                 if (products.get(i).getId().intValue() == productBD.getId().intValue()) {
                     products.get(i).setBasket(null);
                     products.get(i).setInBasket(false);
-                    products.get(i).setCountOfProduct(products.get(i).getCountOfProduct() + 1);
+                    products.get(i).setQuantityOfProducts(products.get(i).getQuantityOfProducts() + 1);
                     productRepository.save(products.get(i));
                     minusSum = basket.getSum() - products.get(i).getPrice();
-                    int discPrice = products.get(i).getPrice() * products.get(i).getDiscount().getPercent() / 100;
+                    double discPrice = products.get(i).getPrice() * products.get(i).getDiscount().getPercent() / 100;
                     minusEndSum = basket.getEndSum() - products.get(i).getPrice() + discPrice;
                     discountPrice = minusSum - minusEndSum;
                     basket.setSum(minusSum);
@@ -102,7 +102,7 @@ public class BasketService {
                 if (products.get(i).getId().intValue() == productBD.getId().intValue()) {
                     products.get(i).setBasket(null);
                     products.get(i).setInBasket(false);
-                    products.get(i).setCountOfProduct(products.get(i).getCountOfProduct() + 1);
+                    products.get(i).setQuantityOfProducts(products.get(i).getQuantityOfProducts() + 1);
                     productRepository.save(products.get(i));
                     basket.setSum(minusSum);
                     basket.setEndSum(minusEndSum);
