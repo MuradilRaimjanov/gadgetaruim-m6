@@ -16,7 +16,7 @@ import java.util.List;
 public class ProductResponse {
 
     Long id;
-    Long weight;
+    int weight;
     String name;
     String image;
     double price;
@@ -26,7 +26,7 @@ public class ProductResponse {
     String description;
     String fileVideo;
     String filePDF;
-    long quantityOfProducts;
+    int quantityOfProducts;
     Gender gender;
     Wireless wireless;
     Waterproof waterproof;
@@ -34,11 +34,11 @@ public class ProductResponse {
     CategoryType categoryType;
     Color color;
     OS os;
-    Memory memory;
+    MemoryRom memoryRom;
     MemoryRam memoryRam;
     LocalDate releaseDate;
     byte quantitySimCards;
-    Long articleNumber;
+    int articleNumber;
     String trackType;
     String enginePower;
     String engineType;
@@ -47,6 +47,5 @@ public class ProductResponse {
     String slopeOfTheTreadmill;
     String diameterOfTheRear;
     String programTraining;
-    SortBy sortBy;
     List<Product> products;
 }

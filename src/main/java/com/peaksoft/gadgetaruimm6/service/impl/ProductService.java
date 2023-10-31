@@ -95,7 +95,7 @@ public class ProductService implements ServiceLayer<ProductRequest, ProductRespo
         oldProduct.setCategoryType(productRequest.getCategoryType());
         oldProduct.setColor(productRequest.getColor());
         oldProduct.setOs(productRequest.getOs());
-        oldProduct.setMemory(productRequest.getMemory());
+        oldProduct.setMemoryRom(productRequest.getMemoryRom());
         oldProduct.setMemoryRam(productRequest.getMemoryRam());
         oldProduct.setReleaseDate(LocalDate.from(LocalDate.now()));
         oldProduct.setQuantitySimCards(productRequest.getQuantitySimCards());
@@ -108,7 +108,6 @@ public class ProductService implements ServiceLayer<ProductRequest, ProductRespo
         oldProduct.setSlopeOfTheTreadmill(productRequest.getSlopeOfTheTreadmill());
         oldProduct.setDiameterOfTheRear(productRequest.getDiameterOfTheRear());
         oldProduct.setProgramTraining(productRequest.getProgramTraining());
-        oldProduct.setSortBy(productRequest.getSortBy());
         oldProduct.setPrice(productRequest.getPrice());
         return productMapper.mapToResponse(productRepository.save(oldProduct));
     }

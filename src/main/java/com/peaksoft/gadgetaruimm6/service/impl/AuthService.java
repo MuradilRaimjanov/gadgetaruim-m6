@@ -1,4 +1,4 @@
-package com.peaksoft.gadgetaruimm6.service.impl;
+package com.peaksoft.gadgetaruimm6.service;
 
 import com.peaksoft.gadgetaruimm6.config.jwt.JwtUtil;
 import com.peaksoft.gadgetaruimm6.model.dto.LoginRequest;
@@ -7,6 +7,7 @@ import com.peaksoft.gadgetaruimm6.model.dto.RegisterRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.RegisterResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.LoginMapper;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.UserMapper;
+import com.peaksoft.gadgetaruimm6.model.entity.Basket;
 import com.peaksoft.gadgetaruimm6.model.entity.User;
 import com.peaksoft.gadgetaruimm6.model.enums.Role;
 import com.peaksoft.gadgetaruimm6.repository.UserRepository;
@@ -37,9 +38,13 @@ public class AuthService {
     JavaMailSender mailSender;
 
     public RegisterResponse register(RegisterRequest registerRequest) {
+        Basket basket = new Basket();
         User user = userMapper.mapToEntity(registerRequest);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.ROLE_USER);
+        user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+        basket.setUser(user);
+        user.setBasket(basket);
         userRepository.save(user);
         return userMapper.mapToResponse(user);
     }

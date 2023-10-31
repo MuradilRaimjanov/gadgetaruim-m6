@@ -12,7 +12,7 @@ public enum BrandType {
     APPLE,
     NOKIA,
     IPAD,
-    REALMI ,
-    VIVO ,
+    REALME,
+    VIVO,
     OPPO
 }

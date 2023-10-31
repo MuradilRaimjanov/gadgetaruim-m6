@@ -20,6 +20,8 @@ public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
+    @Column(name = "brand_name")
     String brandName;
 
     String image;

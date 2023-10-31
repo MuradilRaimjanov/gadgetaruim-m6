@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -43,7 +44,11 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     Role role;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "basket_id")
+    Basket basket;
+
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
     Feedback feedbacks;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
@@ -54,7 +59,6 @@ public class User implements UserDetails {
 
     @OneToOne(mappedBy = "user")
     Address address;
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -59,7 +59,7 @@ public class SpringSecurity {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(
                                 "/swagger-ui/**",
-                                "/swagger-resources/*",
+                                "/swagger-resources/**",
                                 "/v3/api-docs/**",
                                 "/api/auth/**",
                                 "https://accounts.google.com").permitAll()

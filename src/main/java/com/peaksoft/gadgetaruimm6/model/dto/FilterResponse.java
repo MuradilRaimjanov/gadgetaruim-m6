@@ -9,12 +9,13 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class FilterResponse {
 
     Long id;
-    Long weight;
+    int weight;
     String name;
     String image;
     double price;
@@ -22,14 +23,17 @@ public class FilterResponse {
     String guarantee;
     String processor;
     String description;
-    CategoryType categoryTy;
+    String filPDF;
+    String fileVideo;
+    CategoryType categoryType;
     Color color;
     OS os;
-    Memory memory;
+    MemoryRom memoryRom;
     MemoryRam memoryRam;
     LocalDate releaseDate;
+    String dateIssue;
     byte quantitySimCards;
-    Long articleNumber;
+    int articleNumber;
     String trackType;
     String enginePower;
     String engineType;
@@ -38,7 +42,7 @@ public class FilterResponse {
     String slopeOfTheTreadmill;
     String diameterOfTheRear;
     String programTraining;
-
-    public FilterResponse() {
-    }
+    String displayInch;
+    String capacityBattery;
+    int quantityOfProduct;
 }

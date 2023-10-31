@@ -33,5 +33,4 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             ORDER BY CAST(p.releaseDate AS localdate) DESC
             """)
     List<Product> filterNew();
-
 }

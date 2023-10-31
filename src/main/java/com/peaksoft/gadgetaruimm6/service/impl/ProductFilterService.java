@@ -27,6 +27,7 @@ public class ProductFilterService {
         switch (productRequest.getSortBy()) {
             case BY_NEW -> {
                 products = productRepository.filterNew(
+                        productRequest.getBrands(),
                         productRequest.getColors(),
                         productRequest.getRams(),
                         productRequest.getRoms(),
@@ -36,6 +37,7 @@ public class ProductFilterService {
             }
             case BY_ASC -> {
                 products = productRepository.filterAsc(
+                        productRequest.getBrands(),
                         productRequest.getColors(),
                         productRequest.getRams(),
                         productRequest.getRoms(),
@@ -45,6 +47,7 @@ public class ProductFilterService {
             }
             case BY_DESC -> {
                 products = productRepository.filterDesc(
+                        productRequest.getBrands(),
                         productRequest.getColors(),
                         productRequest.getRams(),
                         productRequest.getRoms(),
@@ -54,6 +57,7 @@ public class ProductFilterService {
             }
             case BY_SALE -> {
                 products = productRepository.filterSale(
+                        productRequest.getBrands(),
                         productRequest.getColors(),
                         productRequest.getRams(),
                         productRequest.getRoms(),
@@ -63,6 +67,7 @@ public class ProductFilterService {
             }
             case BY_SALE_UP -> {
                 products = productRepository.filterSaleUp(
+                        productRequest.getBrands(),
                         productRequest.getColors(),
                         productRequest.getRams(),
                         productRequest.getRoms(),
@@ -72,6 +77,7 @@ public class ProductFilterService {
             }
             case BY_REC -> {
                 products = productRepository.filterRec(
+                        productRequest.getBrands(),
                         productRequest.getColors(),
                         productRequest.getRams(),
                         productRequest.getRoms(),
@@ -81,6 +87,7 @@ public class ProductFilterService {
             }
             default -> {
                 products = productRepository.filter(
+                        productRequest.getBrands(),
                         productRequest.getColors(),
                         productRequest.getRams(),
                         productRequest.getRoms(),

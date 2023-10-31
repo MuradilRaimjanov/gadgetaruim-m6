@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ProductRequest {
 
-    Long weight;
+    int weight;
     String name;
     String image;
     double price;
@@ -23,7 +23,7 @@ public class ProductRequest {
     String description;
     String fileVideo;
     String filePDF;
-    long quantityOfProducts;
+    int quantityOfProducts;
     Gender gender;
     Wireless wireless;
     Waterproof waterproof;
@@ -31,11 +31,11 @@ public class ProductRequest {
     CategoryType categoryType;
     Color color;
     OS os;
-    Memory memory;
+    MemoryRom memoryRom;
     MemoryRam memoryRam;
     LocalDate releaseDate;
     byte quantitySimCards;
-    Long articleNumber;
+    int articleNumber;
     String trackType;
     String enginePower;
     String engineType;
@@ -44,7 +44,6 @@ public class ProductRequest {
     String slopeOfTheTreadmill;
     String diameterOfTheRear;
     String programTraining;
-    SortBy sortBy;
 
 
 }

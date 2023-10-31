@@ -1,11 +1,12 @@
 package com.peaksoft.gadgetaruimm6.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.peaksoft.gadgetaruimm6.model.enums.*;
+import com.peaksoft.gadgetaruimm6.model.entity.Brand;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    Long weight;
+    int weight;
     String name;
     String image;
     double price;
@@ -30,18 +31,11 @@ public class Product {
     String guarantee;
     String processor;
     String description;
-    String fileVideo;
-    String filePDF;
-    long quantityOfProducts;
 
-    @Enumerated(EnumType.STRING)
-    Gender gender;
-    @Enumerated(EnumType.STRING)
-    SortBy sortBy;
-    @Enumerated(EnumType.STRING)
-    Wireless wireless;
-    @Enumerated(EnumType.STRING)
-    Waterproof waterproof;
+    @Column(name = "file_pdf")
+    String filePDF;
+    @Column(name = "file_video")
+    String fileVideo;
     @Enumerated(EnumType.STRING)
     Form form;
     @Enumerated(EnumType.STRING)
@@ -50,16 +44,23 @@ public class Product {
     Color color;
     @Enumerated(EnumType.STRING)
     OS os;
+
     @Enumerated(EnumType.STRING)
-    Memory memory;
+    @Column(name = "memory_rom")
+    MemoryRom memoryRom;
+
     @Enumerated(EnumType.STRING)
+    @Column(name = "memory_ram")
     MemoryRam memoryRam;
+
     @Column(name = "release_date")
     LocalDate releaseDate;
+    @Column(name = "date_of_issue")
+    String dateIssue;
     @Column(name = "quantity_sim_cards")
     byte quantitySimCards;
     @Column(name = "article_number")
-    Long articleNumber;
+    int articleNumber;
     @Column(name = "track_type")
     String trackType;
     @Column(name = "engine_power")
@@ -76,22 +77,34 @@ public class Product {
     String diameterOfTheRear;
     @Column(name = "program_training")
     String programTraining;
+    @Column(name = "display_inch")
+    String displayInch;
+    @Column(name = "capacity_battery")
+    String capacityBattery;
+    @Column(name = "quantity_of_product")
+    int quantityOfProducts;
+    @Enumerated(EnumType.STRING)
+    Gender gender;
+    @Enumerated(EnumType.STRING)
+    Wireless wireless;
+    @Enumerated(EnumType.STRING)
+    Waterproof waterproof;
 
-    @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "basket_id")
     Basket basket;
 
-    @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL)
+    @Column(name = "in_basket")
+    Boolean inBasket;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "discount_id")
     Discount discount;
 
-    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     List<Feedback> feedbacks;
 
-    @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "brand_id")
     Brand brand;
-
 }

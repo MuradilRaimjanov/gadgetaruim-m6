@@ -1,6 +1,6 @@
 package com.peaksoft.gadgetaruimm6.model.dto;
 
-import com.peaksoft.gadgetaruimm6.model.enums.Role;
+import com.peaksoft.gadgetaruimm6.model.entity.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

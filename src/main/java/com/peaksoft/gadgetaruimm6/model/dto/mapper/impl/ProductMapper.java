@@ -30,7 +30,7 @@ public class ProductMapper implements Mapper<ProductRequest, Product, ProductRes
                 .color(productRequest.getColor())
                 .os(productRequest.getOs())
                 .memoryRam(productRequest.getMemoryRam())
-                .memory(productRequest.getMemory())
+                .memoryRom(productRequest.getMemoryRom())
                 .releaseDate(LocalDate.now())
                 .enginePower(productRequest.getEnginePower())
                 .diameterOfTheRear(productRequest.getDiameterOfTheRear())
@@ -38,7 +38,6 @@ public class ProductMapper implements Mapper<ProductRequest, Product, ProductRes
                 .fileVideo(productRequest.getFileVideo())
                 .price(productRequest.getPrice())
                 .quantityOfProducts(productRequest.getQuantityOfProducts())
-                .sortBy(productRequest.getSortBy())
                 .build();
     }
 
@@ -51,7 +50,7 @@ public class ProductMapper implements Mapper<ProductRequest, Product, ProductRes
                 .color(product.getColor())
                 .releaseDate(LocalDate.now())
                 .os(product.getOs())
-                .memory(product.getMemory())
+                .memoryRom(product.getMemoryRom())
                 .memoryRam(product.getMemoryRam())
                 .quantitySimCards(product.getQuantitySimCards())
                 .weight(product.getWeight())

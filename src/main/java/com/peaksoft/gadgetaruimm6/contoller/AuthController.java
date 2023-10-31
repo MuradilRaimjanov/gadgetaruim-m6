@@ -3,7 +3,7 @@ package com.peaksoft.gadgetaruimm6.contoller;
 import com.peaksoft.gadgetaruimm6.model.dto.LoginRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.RegisterRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.RegisterResponse;
-import com.peaksoft.gadgetaruimm6.service.impl.AuthService;
+import com.peaksoft.gadgetaruimm6.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
