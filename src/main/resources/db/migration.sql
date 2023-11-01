@@ -6,9 +6,9 @@ INSERT INTO wishlist(count_of_product)
 VALUES (0),
        (0);
 
-INSERT INTO users(email, basket_id, wishlist_id, first_name, last_name, password, role)
-VALUES ('admin@gmail.com', 1, 1, 'admin', 'admin last_name', '$2a$12$lPtGrHLi.FYsf8xSJt5fceuGEuzMF3XZZBM9vp91LsaoXl7lEyGSe', 'ROLE_ADMIN'),
-       ('user@gmail.com', 2, 2, 'user', 'user last_name', '$2a$12$rV1HO7BO/.e4aRqVotmCBebjD7cDyGDx7T7uKk3aLbbi/N1bSlicy', 'ROLE_USER');
+INSERT INTO users(email, basket_id, wishlist_id, first_name, last_name, password, role, follow_to_mailing)
+VALUES ('admin@gmail.com', 1, 1, 'admin', 'admin last_name', '$2a$12$lPtGrHLi.FYsf8xSJt5fceuGEuzMF3XZZBM9vp91LsaoXl7lEyGSe', 'ROLE_ADMIN', false),
+       ('user@gmail.com', 2, 2, 'user', 'user last_name', '$2a$12$rV1HO7BO/.e4aRqVotmCBebjD7cDyGDx7T7uKk3aLbbi/N1bSlicy', 'ROLE_USER', false);
 
 
 UPDATE baskets SET user_id = 1 WHERE id = 1;

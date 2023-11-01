@@ -1,4 +1,7 @@
 package com.peaksoft.gadgetaruimm6.repository;
 
-public interface MailingRepository {
+import com.peaksoft.gadgetaruimm6.model.entity.Mailing;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MailingRepository extends JpaRepository<Mailing, Long> {
 }
