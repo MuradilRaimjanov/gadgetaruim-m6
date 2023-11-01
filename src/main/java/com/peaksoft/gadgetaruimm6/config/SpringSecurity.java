@@ -5,9 +5,9 @@ import com.peaksoft.gadgetaruimm6.config.jwt.JwtFilter;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -28,6 +28,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class SpringSecurity {
+
 
     JwtFilter jwtFilter;
     UserDetailsService userDetailsService;
@@ -58,12 +59,9 @@ public class SpringSecurity {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(
                                 "/swagger-ui/**",
-                                "/swagger-resources/*",
+                                "/swagger-resources/**",
                                 "/v3/api-docs/**",
-                                "/api/auth/sign-in",
-                                "/api/auth/sing-up",
-                                "/api/auth/get",
-                                "/sig-up",
+                                "/api/auth/**",
                                 "https://accounts.google.com").permitAll()
                         .anyRequest().authenticated()
                 )

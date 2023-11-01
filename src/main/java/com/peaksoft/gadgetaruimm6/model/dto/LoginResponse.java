@@ -8,6 +8,11 @@ import lombok.Data;
 @Builder
 public class LoginResponse {
     String token;
-    Role role;
     String email;
+
+    public LoginResponse(String token, String email) {
+        this.token = token;
+        this.email = email;
+    }
+
 }

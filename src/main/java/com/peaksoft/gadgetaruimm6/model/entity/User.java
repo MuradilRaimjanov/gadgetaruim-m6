@@ -38,11 +38,15 @@ public class User implements UserDetails {
     String password;
     LocalDate createdDate;
     String phoneNumber;
-    LocalDateTime createdAt;
-    LocalDateTime updatedAt;
+    String token;
+    LocalDateTime tokenCreated;
 
     @Enumerated(EnumType.STRING)
     Role role;
+
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "basket_id")
+    Basket basket;
 
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
     Feedback feedbacks;
@@ -55,7 +59,6 @@ public class User implements UserDetails {
 
     @OneToOne(mappedBy = "user")
     Address address;
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
