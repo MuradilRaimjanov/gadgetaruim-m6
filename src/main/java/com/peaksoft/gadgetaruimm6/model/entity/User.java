@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -59,6 +58,11 @@ public class User implements UserDetails {
 
     @OneToOne(mappedBy = "user")
     Address address;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "wishlist_id")
+    Wishlist wishlist;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

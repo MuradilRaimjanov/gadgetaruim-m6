@@ -9,6 +9,7 @@ import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.LoginMapper;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.UserMapper;
 import com.peaksoft.gadgetaruimm6.model.entity.Basket;
 import com.peaksoft.gadgetaruimm6.model.entity.User;
+import com.peaksoft.gadgetaruimm6.model.entity.Wishlist;
 import com.peaksoft.gadgetaruimm6.model.enums.Role;
 import com.peaksoft.gadgetaruimm6.repository.UserRepository;
 import lombok.AccessLevel;
@@ -38,13 +39,18 @@ public class AuthService {
     JavaMailSender mailSender;
 
     public RegisterResponse register(RegisterRequest registerRequest) {
-        Basket basket = new Basket();
         User user = userMapper.mapToEntity(registerRequest);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.ROLE_USER);
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+
+        Wishlist wishlist = new Wishlist();
+        wishlist.setUser(user);
+        user.setWishlist(wishlist);
+
+        Basket basket = new Basket();
         basket.setUser(user);
         user.setBasket(basket);
+
         userRepository.save(user);
         return userMapper.mapToResponse(user);
     }

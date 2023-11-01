@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -107,4 +106,8 @@ public class Product {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "brand_id")
     Brand brand;
+
+    @ManyToOne
+    @JoinColumn(name = "wishlist_id")
+    Wishlist wishlist;
 }
