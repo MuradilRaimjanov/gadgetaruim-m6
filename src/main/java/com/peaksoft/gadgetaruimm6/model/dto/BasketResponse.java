@@ -11,9 +11,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class WishlistResponse {
+public class BasketResponse {
 
-    int countProduct;
+    int countOfProduct;
+    double countDiscPrice;
+    double allSum;
+    double endSum;
     List<FilterResponse> products;
-
+    String massage;
 }

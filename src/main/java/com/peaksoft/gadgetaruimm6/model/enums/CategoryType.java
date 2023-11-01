@@ -8,5 +8,6 @@ import lombok.NoArgsConstructor;
 public enum CategoryType {
     SMARTPHONES,
     LAPTOPS,
-    TABLETS
+    TABLETS,
+    SMARTWATCH
 }

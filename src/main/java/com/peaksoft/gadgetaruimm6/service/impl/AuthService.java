@@ -7,6 +7,7 @@ import com.peaksoft.gadgetaruimm6.model.dto.RegisterRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.RegisterResponse;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.LoginMapper;
 import com.peaksoft.gadgetaruimm6.model.dto.mapper.impl.UserMapper;
+import com.peaksoft.gadgetaruimm6.model.entity.Basket;
 import com.peaksoft.gadgetaruimm6.model.entity.User;
 import com.peaksoft.gadgetaruimm6.model.entity.Wishlist;
 import com.peaksoft.gadgetaruimm6.model.enums.Role;
@@ -39,11 +40,17 @@ public class AuthService {
 
     public RegisterResponse register(RegisterRequest registerRequest) {
         User user = userMapper.mapToEntity(registerRequest);
+        user.setRole(Role.ROLE_USER);
+        user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+
         Wishlist wishlist = new Wishlist();
         wishlist.setUser(user);
         user.setWishlist(wishlist);
-        user.setPassword(user.getPassword());
-        user.setRole(Role.ROLE_USER);
+
+        Basket basket = new Basket();
+        basket.setUser(user);
+        user.setBasket(basket);
+
         userRepository.save(user);
         return userMapper.mapToResponse(user);
     }

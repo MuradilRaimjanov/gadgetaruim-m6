@@ -43,7 +43,11 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     Role role;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "basket_id")
+    Basket basket;
+
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
     Feedback feedbacks;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
@@ -89,5 +93,4 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 }

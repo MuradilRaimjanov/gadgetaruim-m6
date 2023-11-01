@@ -5,7 +5,9 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public enum Role {
-    ROLE_USER,
-    ROLE_ADMIN
+public enum Wireless {
+    BLUETOOTH,
+    WI_FI,
+    GPS,
+    NFS
 }

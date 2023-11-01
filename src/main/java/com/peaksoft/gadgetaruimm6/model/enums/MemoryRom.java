@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public enum Memory {
+public enum MemoryRom {
 
     EIGHT_GB("8ГБ"),
     SIXTEEN_GB("16ГБ"),
@@ -17,7 +17,7 @@ public enum Memory {
 
     private String name;
 
-    Memory(String name) {
+    MemoryRom(String name) {
         this.name = name;
     }
 }
