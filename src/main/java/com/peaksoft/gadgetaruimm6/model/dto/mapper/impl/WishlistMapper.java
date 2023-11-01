@@ -1,11 +1,7 @@
 package com.peaksoft.gadgetaruimm6.model.dto.mapper.impl;
 
-import com.peaksoft.gadgetaruimm6.model.dto.FilterRequest;
 import com.peaksoft.gadgetaruimm6.model.dto.FilterResponse;
-import com.peaksoft.gadgetaruimm6.model.dto.mapper.Mapper;
-
 import com.peaksoft.gadgetaruimm6.model.entity.Product;
-import com.peaksoft.gadgetaruimm6.repository.ProductFilterRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -14,26 +10,12 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PACKAGE, makeFinal = true)
-public class FilterMapper implements Mapper<FilterRequest, List<Product>, List<FilterResponse>> {
-    ProductFilterRepository productRepository;
+public class WishlistMapper  {
 
-    @Override
-    public List<Product> mapToEntity(FilterRequest filterRequest) {
-        return productRepository.filter(
-                filterRequest.getBrands(),
-                filterRequest.getColors(),
-                filterRequest.getRams(),
-                filterRequest.getRoms(),
-                filterRequest.getPriceFrom(),
-                filterRequest.getPriceTo()
-                );
-    }
 
-    @Override
     public List<FilterResponse> mapToResponse(List<Product> products) {
         List<FilterResponse> responses = new ArrayList<>();
         products.stream().map(product -> responses.add(new FilterResponse(
