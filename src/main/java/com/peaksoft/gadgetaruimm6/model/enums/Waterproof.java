@@ -5,14 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public enum Brand {
-    SAMSUNG,
-    HONOR,
-    HUAWEI,
-    APPLE,
-    NOKIA,
-    IPAD,
-    REALMI ,
-    VIVO ,
-    OPPO
+public enum Waterproof {
+    YES,
+    NO
 }

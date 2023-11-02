@@ -1,10 +1,11 @@
 package com.peaksoft.gadgetaruimm6.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Setter
@@ -12,17 +13,20 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "discounts")
+@Table(name = "brands")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Discount {
+public class Brand {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    LocalDate start;
-    LocalDate finish;
-    int percent;
 
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "discount")
-    Product product;
+    @Column(name = "brand_name")
+    String brandName;
+
+    String image;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "brand")
+    List<Product> products;
 }
