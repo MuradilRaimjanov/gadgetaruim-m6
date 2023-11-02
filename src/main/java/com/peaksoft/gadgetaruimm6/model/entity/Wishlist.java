@@ -4,25 +4,27 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @Entity
-@Setter
 @Getter
-@Builder
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "discounts")
+@Table(name = "wishlist")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Discount {
+public class Wishlist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    LocalDate start;
-    LocalDate finish;
-    int percent;
 
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "discount")
-    Product product;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "wishlist")
+    List<Product> products;
+
+    @Column(name = "count_of_product")
+    int countOfProduct;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    User user;
 }

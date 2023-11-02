@@ -1,14 +1,9 @@
 spring:
-  sql:
-      init:
-        mode: always
-        data-locations: classpath:db/migration.sql
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: mura
-
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
@@ -27,9 +22,13 @@ spring:
           starttls:
             enable: true
     protocol: smtp
-
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:db/migration.sql
 server:
   port: 9090
 
 secret-key: 984hg493gh0439rthr0429uruj2309h937gc763fe87t3f89723gf
+
 

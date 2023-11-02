@@ -2,13 +2,21 @@ INSERT INTO baskets(discount_percent_sum, sum, end_sum, quantity_of_products)
 VALUES (0, 0, 0, 0),
        (0, 0, 0, 0);
 
-INSERT INTO users(email, basket_id, first_name, last_name, password, role)
-VALUES ('admin@gmail.com', 1, 'admin', 'admin last_name', '$2a$12$lPtGrHLi.FYsf8xSJt5fceuGEuzMF3XZZBM9vp91LsaoXl7lEyGSe', 'ROLE_ADMIN'),
-       ('user@gmail.com', 2, 'user', 'user last_name', '$2a$12$rV1HO7BO/.e4aRqVotmCBebjD7cDyGDx7T7uKk3aLbbi/N1bSlicy', 'ROLE_USER');
+INSERT INTO wishlist(count_of_product)
+VALUES (0),
+       (0);
+
+INSERT INTO users(email, basket_id, wishlist_id, first_name, last_name, password, role)
+VALUES ('admin@gmail.com', 1, 1, 'admin', 'admin last_name', '$2a$12$lPtGrHLi.FYsf8xSJt5fceuGEuzMF3XZZBM9vp91LsaoXl7lEyGSe', 'ROLE_ADMIN'),
+       ('user@gmail.com', 2, 2, 'user', 'user last_name', '$2a$12$rV1HO7BO/.e4aRqVotmCBebjD7cDyGDx7T7uKk3aLbbi/N1bSlicy', 'ROLE_USER');
 
 
 UPDATE baskets SET user_id = 1 WHERE id = 1;
 UPDATE baskets SET user_id = 2 WHERE id = 2;
+
+UPDATE wishlist SET user_id = 1 WHERE id = 1;
+UPDATE wishlist SET user_id = 2 WHERE id = 2;
+
 
 INSERT INTO discounts(finish, percent, start)
 VALUES (CAST('2023-12-10' AS DATE), 10, CAST('2023-09-10' AS DATE)),

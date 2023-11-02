@@ -31,10 +31,10 @@ public class BasketService {
     public BasketResponse addToBasket(Long id, Principal principal) {
         List<Product> products = new ArrayList<>();
         Product product = productRepository.findById(id).orElseThrow(()-> new ProductNotFoundException("Product not found"));
-        int totalSum = 0;
-        int currPrice = 0;
-        int discPrice = 0;
-        int percent = 0;
+        double totalSum = 0;
+        double currPrice = 0;
+        double discPrice = 0;
+        double percent = 0;
         int count = 0;
         User user = userRepository.findByEmail(principal.getName());
         if (user.getBasket().getId() != null && product.getQuantityOfProducts() > 0) {
@@ -92,9 +92,9 @@ public class BasketService {
                     basket.setSum(minusSum);
                     basket.setEndSum(minusEndSum);
                     basket.setDiscountPercentSum(discountPrice);
-                    i++;
-                    basket.setQuantityOfProducts(products.size() - i);
-                    products.remove(i - 1);
+                    x++;
+                    basket.setQuantityOfProducts(products.size() - x);
+                    products.remove(i);
                     basket.setProducts(products);
 
                 }
