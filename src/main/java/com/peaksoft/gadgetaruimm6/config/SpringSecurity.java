@@ -62,6 +62,7 @@ public class SpringSecurity {
                                 "/swagger-resources/**",
                                 "/v3/api-docs/**",
                                 "/api/auth/**",
+                                "/api/main/**",
                                 "https://accounts.google.com").permitAll()
                         .anyRequest().authenticated()
                 )
