@@ -43,13 +43,16 @@ public class MailingService {
         List<User> users = userRepository.findAll();
         SimpleMailMessage message = new SimpleMailMessage();
         for (User user : users) {
-            System.out.println(user.getFollowToMailing());
             if (user.getFollowToMailing()) {
-                message.setFrom("temuchi500@gmail.com");
-                message.setTo(user.getEmail());
-                message.setSubject(mailingRequest.getName());
-                message.setText(mailingRequest.getImage()+"\n"+mailingRequest.getDescription()+"\nStart sale "+mailingRequest.getStart()+"\nEnd sale "+ mailingRequest.getEnd());
-                mailSender.send(message);
+                try {
+                    message.setFrom("temuchi500@gmail.com");
+                    message.setTo(user.getEmail());
+                    message.setSubject(mailingRequest.getName());
+                    message.setText(mailingRequest.getImage() + "\n" + mailingRequest.getDescription() + "\nStart sale " + mailingRequest.getStart() + "\nEnd sale " + mailingRequest.getEnd());
+                    mailSender.send(message);
+                } catch (RuntimeException r){
+                    throw new RuntimeException("an error occurred while sending");
+                }
             }
         }
         Mailing mailing = new Mailing();
