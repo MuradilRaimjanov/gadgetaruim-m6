@@ -63,6 +63,14 @@ public class User implements UserDetails {
     @JoinColumn(name = "wishlist_id")
     Wishlist wishlist;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "comparison",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    List<Product> products;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

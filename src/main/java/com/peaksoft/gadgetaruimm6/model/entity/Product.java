@@ -110,4 +110,7 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "wishlist_id")
     Wishlist wishlist;
+
+    @ManyToMany(mappedBy = "products", cascade = CascadeType.MERGE)
+    private List<User> users;
 }
