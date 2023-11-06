@@ -18,6 +18,7 @@ public class FilterResponse {
     int weight;
     String name;
     String image;
+    int discount;
     double price;
     String screen;
     String guarantee;

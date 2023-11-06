@@ -23,6 +23,7 @@ public class WishlistMapper  {
                 product.getWeight(),
                 product.getName(),
                 product.getImage(),
+                product.getDiscount().getPercent(),
                 product.getPrice(),
                 product.getScreen(),
                 product.getGuarantee(),
