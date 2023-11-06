@@ -26,7 +26,7 @@ public class MailingController {
         return mailingService.mailingToUser(mailingRequest);
     }
 
-    @PutMapping("/update_mail/{id}")
+    @PutMapping("/update-mail/{id}")
     public String updateMail(@PathVariable("id") Long id, @RequestBody MailingRequest mailingRequest) {
         return mailingService.updateMail(id, mailingRequest);
     }
