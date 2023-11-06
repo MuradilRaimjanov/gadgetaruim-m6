@@ -25,6 +25,9 @@ public class Address {
     @Column(name = "country_name")
     String countryName;
 
+    @Column(name = "postal_code")
+    String postalCode;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     User user;
