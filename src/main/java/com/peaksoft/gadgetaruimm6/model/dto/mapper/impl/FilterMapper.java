@@ -41,6 +41,7 @@ public class FilterMapper implements Mapper<FilterRequest, List<Product>, List<F
                 product.getWeight(),
                 product.getName(),
                 product.getImage(),
+                product.getDiscount().getPercent(),
                 product.getPrice(),
                 product.getScreen(),
                 product.getGuarantee(),
