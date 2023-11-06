@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/orders")
-@Tag(name = "OrderController")
+@Tag(name = "Order controller")
 @RequiredArgsConstructor
 public class OrderController {
     private  final OrderService orderService;
