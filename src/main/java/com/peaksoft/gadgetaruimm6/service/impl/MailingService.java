@@ -50,8 +50,8 @@ public class MailingService {
                     message.setSubject(mailingRequest.getName());
                     message.setText(mailingRequest.getImage() + "\n" + mailingRequest.getDescription() + "\nStart sale " + mailingRequest.getStart() + "\nEnd sale " + mailingRequest.getEnd());
                     mailSender.send(message);
-                } catch (RuntimeException r){
-                    throw new RuntimeException("an error occurred while sending");
+                } catch (RuntimeException e){
+                    System.out.println(e.getMessage());
                 }
             }
         }
@@ -63,6 +63,38 @@ public class MailingService {
         mailing.setEndOfSale(mailingRequest.getEnd());
         mailingRepository.save(mailing);
         return "The mail successfully send to followers";
+    }
+
+    public String updateMail(Long id, MailingRequest mailingRequest) {
+        Mailing mailingBD = mailingRepository.findById(id).orElseThrow(()-> new RuntimeException("The mailing not found"));
+        mailingBD.setName(mailingRequest.getName());
+        mailingBD.setDescription(mailingRequest.getDescription());
+        mailingBD.setImage(mailingRequest.getImage());
+        mailingBD.setStartOfSale(mailingRequest.getStart());
+        mailingBD.setEndOfSale(mailingRequest.getEnd());
+        mailingRepository.save(mailingBD);
+        List<User> users = userRepository.findAll();
+        SimpleMailMessage message =new SimpleMailMessage();
+        for (User user: users) {
+            if (user.getFollowToMailing()) {
+                try {
+                    message.setFrom("temuchi500@gmail.com");
+                    message.setTo(user.getEmail());
+                    message.setSubject(mailingRequest.getName());
+                    message.setText(mailingRequest.getImage() + "\n" + mailingRequest.getDescription() + "\nStart sale " + mailingRequest.getStart() + "\nEnd sale " + mailingRequest.getEnd());
+                    mailSender.send(message);
+                } catch (RuntimeException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+        return "The newsletter has been successfully posted and send";
+    }
+
+    public String delete(Long id) {
+        Mailing mailing = mailingRepository.findById(id).orElseThrow(()-> new RuntimeException("The mailing not found"));
+        mailingRepository.delete(mailing);
+        return "The mailing successfully deleted";
     }
 
 }
