@@ -29,5 +29,4 @@ public class ProductFilterController {
     public List<FilterResponse> filterCatalog(@RequestBody FilterRequest productRequest) {
         return productService.filterCatalog(productRequest);
     }
-
 }
