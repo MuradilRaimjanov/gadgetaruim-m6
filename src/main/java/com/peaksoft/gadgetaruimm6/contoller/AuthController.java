@@ -23,6 +23,8 @@ public class AuthController {
     @PostMapping("/sing-up")
     @Operation(description = "This is method for registration")
     public ResponseEntity<RegisterResponse> register(@RequestBody @Valid RegisterRequest request) {
+        System.out.println("Hello controller");
+        System.out.println(request.getPhoneNumber());
         return new ResponseEntity<>(authService.register(request), HttpStatus.OK);
     }
 

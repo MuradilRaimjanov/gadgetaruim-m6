@@ -40,6 +40,9 @@ public class User implements UserDetails {
     String token;
     LocalDateTime tokenCreated;
 
+    @Column(name = "follow_to_mailing")
+    Boolean followToMailing;
+
     @Enumerated(EnumType.STRING)
     Role role;
 

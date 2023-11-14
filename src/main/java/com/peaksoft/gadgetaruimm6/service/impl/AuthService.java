@@ -41,7 +41,7 @@ public class AuthService {
     public RegisterResponse register(RegisterRequest registerRequest) {
         User user = userMapper.mapToEntity(registerRequest);
         user.setRole(Role.ROLE_USER);
-        user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+        user.setFollowToMailing(false);
 
         Wishlist wishlist = new Wishlist();
         wishlist.setUser(user);
